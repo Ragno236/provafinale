@@ -12743,10 +12743,10 @@ function ad({
     [se, G] = Z.useState(!1),
     [cc, ccSet] = Z.useState(!1),
     subtitles = [
-      `Partiamo da ${h}.`,
-      "Tieni a mente il concetto, non la definizione.",
-      `Fonte: ${v}. Usa questo aggancio se ti chiedono da dove arriva l'idea.`,
-      "Ora trasformalo in una risposta breve e naturale.",
+      "Un LLM non ragiona: prevede la parola più probabile.",
+      "Funziona leggendo il contesto che gli dai.",
+      "Per questo può sembrare sicuro anche quando sbaglia.",
+      "Usalo come supporto: la verifica resta tua.",
     ],
     activeSubtitle = Math.min(
       subtitles.length - 1,
@@ -12756,10 +12756,10 @@ function ad({
     if (!se) return;
     const C = setInterval(() => {
       q((F) => {
-        const Y = F + 1.4;
+        const Y = F + 0.85;
         return (Y >= 85 && D(!0), Y >= 100 ? (clearInterval(C), 100) : Y);
       });
-    }, 120);
+    }, 150);
     return () => clearInterval(C);
   }, [se]);
   return i.jsxs("div", {
@@ -12817,22 +12817,25 @@ function ad({
           key: activeSubtitle,
           style: {
             position: "absolute",
-            bottom: 154,
-            left: 22,
-            right: 22,
-            zIndex: 6,
+            top: "42%",
+            left: 26,
+            right: 26,
+            zIndex: 12,
+            transform: "translateY(-50%)",
             textAlign: "center",
             color: "#FFFFFF",
             padding: "0 4px",
-            lineHeight: 1.18,
-            animation: "subIn 220ms ease-out",
-            textShadow: "0 2px 12px rgba(0,0,0,0.95), 0 1px 3px rgba(0,0,0,0.9)",
+            lineHeight: 1.12,
+            animation: "subIn 260ms ease-out",
+            textShadow: "0 3px 16px rgba(0,0,0,0.95), 0 1px 4px rgba(0,0,0,0.95)",
           },
           children: i.jsx("div", {
             style: {
-              fontSize: 19,
+              fontSize: 21,
               fontWeight: 800,
-              letterSpacing: "-0.02em",
+              letterSpacing: "-0.025em",
+              maxWidth: 560,
+              margin: "0 auto",
             },
             children: subtitles[activeSubtitle],
           }),
@@ -12850,14 +12853,15 @@ function ad({
           padding: "16px 16px 20px 16px",
         },
         children: [
-          i.jsxs("div", {
-            style: {
-              pointerEvents: "auto",
-              display: "flex",
-              flexDirection: "column",
-              gap: 6,
-              marginBottom: 16,
-            },
+          !cc &&
+            i.jsxs("div", {
+              style: {
+                pointerEvents: "auto",
+                display: "flex",
+                flexDirection: "column",
+                gap: 6,
+                marginBottom: 16,
+              },
             children: [
               i.jsx("div", {
                 style: {
