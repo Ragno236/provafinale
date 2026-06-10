@@ -13317,14 +13317,13 @@ function cd({ statements: a, onComplete: d }) {
     [_, V] = Z.useState(!1),
     q = a[u],
     H = (G) => {
+      const A = G === q.isTrue ? j + 1 : j;
       (k(G), V(!0), G === q.isTrue && P((R) => R + 1));
-    },
-    D = () => {
-      if (u < a.length - 1) (h((G) => G + 1), k(null), V(!1));
-      else {
-        const G = Math.round((j / a.length) * 100);
-        d(G);
-      }
+      setTimeout(() => {
+        u < a.length - 1
+          ? (h((R) => R + 1), k(null), V(!1))
+          : d(Math.round((A / a.length) * 100));
+      }, 850);
     },
     se = v === (q == null ? void 0 : q.isTrue);
   return i.jsxs("div", {
@@ -13380,23 +13379,7 @@ function cd({ statements: a, onComplete: d }) {
                       },
                       children: q.explanation,
                     }),
-                    i.jsx("button", {
-                      onClick: D,
-                      style: {
-                        width: "100%",
-                        padding: "14px 0",
-                        backgroundColor: g,
-                        color: N,
-                        border: "none",
-                        borderRadius: 100,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        cursor: "pointer",
-                        fontFamily: "inherit",
-                      },
-                      children:
-                        u < a.length - 1 ? "Prossima →" : "Termina gioco →",
-                    }),
+
                   ],
                 })
               : i.jsxs("div", {
@@ -13447,17 +13430,16 @@ function fd({ sentences: a, onComplete: d }) {
     [q, H] = Z.useState(!1),
     D = a[u],
     se = (A) => {
-      v !== D.answer &&
-        (A === D.answer
-          ? (k(A), q || V((R) => R + 1))
-          : (H(!0), P(A), setTimeout(() => P(null), 400)));
-    },
-    G = () => {
-      if (u < a.length - 1) (h((A) => A + 1), k(null), H(!1));
-      else {
-        const A = Math.round((_ / a.length) * 100);
-        d(A);
-      }
+      if (v === D.answer) return;
+      if (A === D.answer) {
+        const R = q ? _ : _ + 1;
+        (k(A), q || V((C) => C + 1));
+        setTimeout(() => {
+          u < a.length - 1
+            ? (h((C) => C + 1), k(null), H(!1), P(null))
+            : d(Math.round((R / a.length) * 100));
+        }, 650);
+      } else (H(!0), P(A), setTimeout(() => P(null), 400));
     };
   return i.jsxs("div", {
     style: { display: "flex", flexDirection: "column", gap: 16 },
@@ -13549,24 +13531,7 @@ function fd({ sentences: a, onComplete: d }) {
                 );
               }),
             }),
-            v === D.answer &&
-              i.jsx("button", {
-                onClick: G,
-                style: {
-                  width: "100%",
-                  padding: "14px 0",
-                  backgroundColor: g,
-                  color: N,
-                  border: "none",
-                  borderRadius: 100,
-                  fontSize: 13,
-                  fontWeight: 600,
-                  cursor: "pointer",
-                  fontFamily: "inherit",
-                  marginTop: 12,
-                },
-                children: u < a.length - 1 ? "Prossima →" : "Termina gioco →",
-              }),
+
           ],
         }),
     ],
