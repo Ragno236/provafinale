@@ -12741,7 +12741,17 @@ function ad({
   const [V, q] = Z.useState(0),
     [H, D] = Z.useState(!1),
     [se, G] = Z.useState(!1),
-    [cc, ccSet] = Z.useState(!1);
+    [cc, ccSet] = Z.useState(!1),
+    subtitles = [
+      `Partiamo da ${h}.`,
+      "Tieni a mente il concetto, non la definizione.",
+      `Fonte: ${v}. Usa questo aggancio se ti chiedono da dove arriva l'idea.`,
+      "Ora trasformalo in una risposta breve e naturale.",
+    ],
+    activeSubtitle = Math.min(
+      subtitles.length - 1,
+      Math.max(0, Math.floor((V / 100) * subtitles.length)),
+    );
   Z.useEffect(() => {
     if (!se) return;
     const C = setInterval(() => {
@@ -12765,7 +12775,7 @@ function ad({
     children: [
       i.jsx("style", {
         children:
-          "@keyframes gradFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}",
+          "@keyframes gradFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}} @keyframes subIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}",
       }),
       i.jsx("div", {
         style: {
@@ -12801,23 +12811,41 @@ function ad({
         children: "CC",
       }),
       cc &&
-        se &&
-        i.jsx("div", {
+        i.jsxs("div", {
+          key: activeSubtitle,
           style: {
             position: "absolute",
-            bottom: 148,
-            left: 16,
-            right: 16,
-            zIndex: 4,
+            bottom: 130,
+            left: 14,
+            right: 14,
+            zIndex: 6,
             textAlign: "center",
-            fontSize: 12,
             color: "#FFFFFF",
-            backgroundColor: "rgba(0,0,0,0.6)",
-            borderRadius: 8,
-            padding: "6px 10px",
-            lineHeight: 1.4,
+            backgroundColor: "rgba(10,10,10,0.72)",
+            border: "1px solid rgba(232,255,90,0.28)",
+            borderRadius: 12,
+            padding: "9px 12px",
+            lineHeight: 1.35,
+            animation: "subIn 220ms ease-out",
+            backdropFilter: "blur(8px)",
           },
-          children: h,
+          children: [
+            i.jsx("div", {
+              style: {
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "#E8FF5A",
+                marginBottom: 4,
+              },
+              children: "Sottotitoli",
+            }),
+            i.jsx("div", {
+              style: { fontSize: 12, fontWeight: 500 },
+              children: subtitles[activeSubtitle],
+            }),
+          ],
         }),
       i.jsxs("div", {
         style: {
