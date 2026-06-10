@@ -9532,12 +9532,34 @@ const Ef = [
   { label: "Simula", Icon: bf },
   { label: "Profilo", Icon: If },
 ];
+const POP_QUOTES = [
+  "Sheldon sarebbe fiero di te.",
+  "Veloce come la DeLorean di Doc.",
+  "10 punti a Grifondoro. Continua così.",
+  "Non cedere al Lato Oscuro. Continua a crederci.",
+  "Che la Forza sia con te.",
+  "Vegeta è diventato Super Saiyan a 35 anni. Crederci e provare è la chiave.",
+  "Se lo può fare Iron Man in una grotta, puoi farlo anche tu.",
+  "Non è la bacchetta, è il mago. Credici.",
+  "Anche Frodo aveva paura… ma ha continuato.",
+  "Se Spider-Man riesce a studiare, lavorare e salvare il mondo, puoi finire quel progetto.",
+  "Non aspettare la lettera di Hogwarts. Inizia comunque.",
+  "Non sei NPC. Smetti di aspettare e gioca da protagonista.",
+  "Il problema non è il boss, è che non stai livellando.",
+  "Anche Magikarp diventa Gyarados. Credici.",
+];
+let popQuotesUsed = [];
+function pickQuote() {
+  if (popQuotesUsed.length >= POP_QUOTES.length) popQuotesUsed = [];
+  const a = POP_QUOTES.map((u, h) => h).filter((u) => !popQuotesUsed.includes(u)),
+    d = a[Math.floor(Math.random() * a.length)];
+  return (popQuotesUsed.push(d), POP_QUOTES[d]);
+}
 function getReadinessTier(a) {
   if (a < 25)
     return {
       label: "Stai ancora ingranando",
-      sublabel: "Ogni sessione è un mattone. Continua.",
-      easterEgg: "Batman ha iniziato senza la Batcaverna.",
+      sublabel: "Continua così, un passo alla volta.",
       colorClass: "default",
     };
   if (a < 50)
@@ -9569,7 +9591,8 @@ function getReadinessTier(a) {
   };
 }
 function ql({ value: a }) {
-  const d = getReadinessTier(a);
+  const d = getReadinessTier(a),
+    [popQ] = Z.useState(() => pickQuote());
   return i.jsxs("div", {
     style: {
       display: "flex",
@@ -9609,7 +9632,7 @@ function ql({ value: a }) {
           textAlign: "center",
           fontStyle: "italic",
         },
-        children: d.easterEgg,
+        children: popQ,
       }),
     ],
   });
@@ -9727,11 +9750,12 @@ function sd({ active: a }) {
     ),
   });
 }
-function Rf() {
+function Rf({ day: dayProp }) {
   const a = _e(),
+    currentDay = dayProp || 1,
+    sess = Ul.find((x) => x.day === currentDay) || Ul[Ul.length - 1],
     d = 42,
-    u = 12,
-    currentDay = 1,
+    u = Math.max(13 - currentDay, 1),
     [h, v] = Z.useState(!1);
   return i.jsxs(i.Fragment, {
     children: [
@@ -9858,7 +9882,8 @@ function Rf() {
             onClick: () => {
               const k = Se.findIndex(
                 (j) =>
-                  j.day === "Giorno 1" && j.label.includes("Sessione · intro"),
+                  j.day === "Giorno " + currentDay &&
+                  j.label.includes("Sessione · intro"),
               );
               k !== -1 && a != null && a.goToIndex && a.goToIndex(k);
             },
@@ -9907,7 +9932,7 @@ function Rf() {
                           letterSpacing: "-0.02em",
                           marginTop: 2,
                         },
-                        children: "Giorno 1 — Cos'è davvero un LLM",
+                        children: "Giorno " + currentDay + " — " + sess.topic,
                       }),
                     ],
                   }),
@@ -10105,7 +10130,7 @@ function Rf() {
                 onClick: () => {
                   const k = Se.findIndex(
                     (j) =>
-                      j.day === "Giorno 1" &&
+                      j.day === "Giorno " + currentDay &&
                       j.label.includes("Sessione · intro"),
                   );
                   k !== -1 && a != null && a.goToIndex && a.goToIndex(k);
@@ -11155,7 +11180,8 @@ function Af() {
   });
 }
 function Bf() {
-  const a = _e();
+  const a = _e(),
+    [popQ] = Z.useState(() => pickQuote());
   return i.jsxs("div", {
     style: {
       flex: 1,
@@ -11247,16 +11273,7 @@ function Bf() {
         children: [
           i.jsx("div", {
             style: { fontSize: 12, color: "rgba(255,255,255,0.5)", textAlign: "center", fontStyle: "italic", marginBottom: 16 },
-            children: [
-              "\"Sheldon sarebbe fiero di te.\"",
-              "\"Veloce come la DeLorean di Doc.\"",
-              "\"10 punti a Grifondoro. Continua così.\"",
-              "\"Non cedere al Lato Oscuro. Continua a crederci.\"",
-              "\"Se lo può fare Iron Man in una grotta, puoi farlo anche tu.\"",
-              "\"Non è la bacchetta, è il mago. Credici.\"",
-              "\"Anche Magikarp diventa Gyarados. Credici.\"",
-              "\"Non sei NPC. Smetti di aspettare e gioca da protagonista.\"",
-            ][Math.floor(Math.random() * 8)],
+            children: '"' + popQ + '"',
           }),
           i.jsx("button", {
             onClick: () => (a == null ? void 0 : a.goNext()),
@@ -11587,8 +11604,13 @@ function Wf() {
                 },
                 children: "Di che si tratta",
               }),
-              i.jsx("div", {
+              i.jsx("input", {
+                type: "text",
+                defaultValue: "Talk al Talent Garden su AI & lavoro",
+                placeholder: "Di che si tratta?",
                 style: {
+                  width: "100%",
+                  boxSizing: "border-box",
                   padding: "14px 16px",
                   backgroundColor: N,
                   border: `1.5px solid ${g}`,
@@ -11596,8 +11618,9 @@ function Wf() {
                   fontSize: 15,
                   color: g,
                   letterSpacing: "-0.01em",
+                  fontFamily: "inherit",
+                  outline: "none",
                 },
-                children: "Talk al Talent Garden su AI & lavoro",
               }),
             ],
           }),
@@ -11616,7 +11639,7 @@ function Wf() {
               }),
               i.jsxs("div", {
                 style: {
-                  padding: "14px 16px",
+                  padding: "8px 16px",
                   backgroundColor: N,
                   border: `1px solid ${Q}`,
                   borderRadius: 14,
@@ -11625,9 +11648,18 @@ function Wf() {
                   alignItems: "center",
                 },
                 children: [
-                  i.jsx("span", {
-                    style: { fontSize: 15, color: g },
-                    children: "Mer 17 giu 2026",
+                  i.jsx("input", {
+                    type: "date",
+                    defaultValue: "2026-06-17",
+                    style: {
+                      border: "none",
+                      backgroundColor: "transparent",
+                      fontSize: 15,
+                      color: g,
+                      fontFamily: "inherit",
+                      outline: "none",
+                      padding: "6px 0",
+                    },
                   }),
                   i.jsx("span", {
                     style: { fontSize: 12, color: b },
@@ -12699,58 +12731,94 @@ function Uf() {
   });
 }
 function ad({
-  videoUrl: a,
   conceptNumber: d,
   totalConcepts: u,
   conceptTitle: h,
   sourceName: v,
   sourceYear: k,
   onNext: j,
-  onSaveVoice: P,
 }) {
-  const _ = Z.useRef(null),
-    [V, q] = Z.useState(0),
+  const [V, q] = Z.useState(0),
     [H, D] = Z.useState(!1),
-    [se, G] = Z.useState(!1);
+    [se, G] = Z.useState(!1),
+    [cc, ccSet] = Z.useState(!1);
   Z.useEffect(() => {
-    const C = setTimeout(() => {
-      G(!0);
-    }, 3e3);
-    return () => clearTimeout(C);
-  }, []);
-  const A = () => {
-      const C = _.current;
-      if (C && C.duration) {
-        const F = C.currentTime / C.duration;
-        (q(F * 100), F >= 0.85 && D(!0));
-      }
-    },
-    R = () => {
-      se && D(!0);
-    };
+    if (!se) return;
+    const C = setInterval(() => {
+      q((F) => {
+        const Y = F + 1.4;
+        return (Y >= 85 && D(!0), Y >= 100 ? (clearInterval(C), 100) : Y);
+      });
+    }, 120);
+    return () => clearInterval(C);
+  }, [se]);
   return i.jsxs("div", {
-    onClick: R,
     style: {
       position: "relative",
       width: "100%",
-      aspectRatio: "9/16",
+      aspectRatio: "4/5",
       borderRadius: "20px",
       overflow: "hidden",
       backgroundColor: "#0A0A0A",
-      cursor: "pointer",
       userSelect: "none",
     },
     children: [
-      i.jsx("video", {
-        ref: _,
-        src: a,
-        autoPlay: !0,
-        muted: !0,
-        loop: !0,
-        playsInline: !0,
-        onTimeUpdate: A,
-        style: { width: "100%", height: "100%", objectFit: "cover" },
+      i.jsx("style", {
+        children:
+          "@keyframes gradFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}",
       }),
+      i.jsx("div", {
+        style: {
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(120deg, #0A0A0A, #2b2e1a, rgba(232,255,90,0.25), #1a2e2b, #0A0A0A)",
+          backgroundSize: "300% 300%",
+          animation: se ? "gradFlow 6s ease infinite" : "none",
+          opacity: 0.92,
+        },
+      }),
+      i.jsx("button", {
+        onClick: (C) => {
+          (C.stopPropagation(), ccSet((F) => !F));
+        },
+        style: {
+          position: "absolute",
+          top: 12,
+          right: 12,
+          zIndex: 5,
+          padding: "4px 9px",
+          borderRadius: 6,
+          border: "1px solid rgba(255,255,255,0.4)",
+          backgroundColor: cc ? "#E8FF5A" : "rgba(0,0,0,0.3)",
+          color: cc ? "#0A0A0A" : "#FFFFFF",
+          fontSize: 10,
+          fontWeight: 700,
+          letterSpacing: "0.08em",
+          cursor: "pointer",
+          fontFamily: "inherit",
+        },
+        children: "CC",
+      }),
+      cc &&
+        se &&
+        i.jsx("div", {
+          style: {
+            position: "absolute",
+            bottom: 148,
+            left: 16,
+            right: 16,
+            zIndex: 4,
+            textAlign: "center",
+            fontSize: 12,
+            color: "#FFFFFF",
+            backgroundColor: "rgba(0,0,0,0.6)",
+            borderRadius: 8,
+            padding: "6px 10px",
+            lineHeight: 1.4,
+          },
+          children: h,
+        }),
       i.jsxs("div", {
         style: {
           position: "absolute",
@@ -12761,7 +12829,7 @@ function ad({
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
-          padding: "20px 16px 24px 16px",
+          padding: "16px 16px 20px 16px",
         },
         children: [
           i.jsxs("div", {
@@ -12769,17 +12837,17 @@ function ad({
               pointerEvents: "auto",
               display: "flex",
               flexDirection: "column",
-              gap: 8,
-              marginBottom: 54,
+              gap: 6,
+              marginBottom: 16,
             },
             children: [
               i.jsx("div", {
                 style: {
                   fontFamily: "Inter, 'Helvetica Neue', sans-serif",
-                  fontSize: "22px",
+                  fontSize: "19px",
                   fontWeight: 700,
                   letterSpacing: "-0.02em",
-                  lineHeight: 1.1,
+                  lineHeight: 1.12,
                   color: "#FFFFFF",
                   maxWidth: "85%",
                 },
@@ -12793,12 +12861,12 @@ function ad({
                   letterSpacing: "0.14em",
                   textTransform: "uppercase",
                   color: "rgba(255,255,255,0.5)",
-                  marginTop: 4,
+                  marginTop: 2,
                 },
                 children: ["CONCETTO ", d, " / ", u],
               }),
               i.jsx("div", {
-                style: { display: "flex", marginTop: 4 },
+                style: { display: "flex", marginTop: 2 },
                 children: i.jsxs("div", {
                   style: {
                     fontFamily: "Inter, 'Helvetica Neue', sans-serif",
@@ -12824,19 +12892,15 @@ function ad({
               gap: 10,
               width: "100%",
               zIndex: 10,
-              marginBottom: 4,
             },
             children: [
               i.jsx("button", {
                 onClick: (C) => {
-                  C.stopPropagation();
-                  if (H) {
-                    if (_.current) { _.current.currentTime = 0; _.current.play(); D(!1); }
-                  } else { P && P(); }
+                  (C.stopPropagation(), q(0), D(!1), G(!0));
                 },
                 style: {
                   flex: 1,
-                  padding: "14px 0",
+                  padding: "13px 0",
                   backgroundColor: "transparent",
                   border: "1px solid rgba(255,255,255,0.25)",
                   color: "#FFFFFF",
@@ -12846,18 +12910,17 @@ function ad({
                   cursor: "pointer",
                   fontFamily: "inherit",
                   backdropFilter: "blur(8px)",
-                  transition: "all 0.2s",
                 },
-                children: H ? "Ascolta di nuovo" : "Inizia",
+                children: H || V >= 100 ? "Ascolta di nuovo" : "Inizia",
               }),
               H &&
                 i.jsx("button", {
                   onClick: (C) => {
-                    (C.stopPropagation(), j());
+                    (C.stopPropagation(), j(!1));
                   },
                   style: {
                     flex: 2,
-                    padding: "14px 0",
+                    padding: "13px 0",
                     border: "none",
                     backgroundColor: "#E8FF5A",
                     color: "#0A0A0A",
@@ -12866,10 +12929,6 @@ function ad({
                     fontWeight: 600,
                     cursor: "pointer",
                     fontFamily: "inherit",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 8,
                     animation: "fadeIn 0.3s ease-out",
                   },
                   children: "Concetto successivo →",
@@ -15087,7 +15146,8 @@ function Qf({ t: a }) {
 }
 function nd({ t: a }) {
   const d = _e(),
-    u = a.scoreAfter - a.scoreBefore;
+    u = a.scoreAfter - a.scoreBefore,
+    [popQ] = Z.useState(() => pickQuote());
   return i.jsxs("div", {
     style: {
       flex: 1,
@@ -15095,6 +15155,7 @@ function nd({ t: a }) {
       flexDirection: "column",
       padding: "0 20px",
       overflowY: "auto",
+      backgroundColor: g,
     },
     children: [
       i.jsxs("div", {
@@ -15103,7 +15164,7 @@ function nd({ t: a }) {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "8px 0",
-          borderBottom: `1px solid ${Q}`,
+          borderBottom: "1px solid rgba(255,255,255,0.12)",
           marginBottom: 12,
         },
         children: [
@@ -15117,11 +15178,15 @@ function nd({ t: a }) {
               display: "flex",
               alignItems: "center",
             },
-            children: i.jsx(Qe, {}),
+            children: i.jsx(Qe, { color: N }),
           }),
           i.jsx("div", {
-            style: { fontSize: 11, color: b, letterSpacing: "0.1em" },
-            children: "Readiness Score",
+            style: {
+              fontSize: 11,
+              color: "rgba(255,255,255,0.5)",
+              letterSpacing: "0.1em",
+            },
+            children: "Feedback",
           }),
           i.jsx("button", {
             onClick: () => {
@@ -15136,35 +15201,39 @@ function nd({ t: a }) {
               display: "flex",
               alignItems: "center",
             },
-            children: i.jsx(bt, {}),
+            children: i.jsx(bt, { color: N }),
           }),
         ],
       }),
       i.jsxs("div", {
-        style: { paddingTop: 10, paddingBottom: 14 },
+        style: { paddingTop: 14, paddingBottom: 18 },
         children: [
           i.jsxs("div", {
             style: {
               fontSize: 10,
-              color: b,
+              color: "rgba(255,255,255,0.5)",
               letterSpacing: "0.16em",
               textTransform: "uppercase",
-              marginBottom: 8,
+              marginBottom: 10,
             },
             children: ["Sessione conclusa · Giorno ", a.day],
           }),
           i.jsxs("div", {
             style: {
-              fontSize: 22,
-              fontWeight: 500,
-              color: g,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.2,
+              fontSize: 28,
+              fontWeight: 700,
+              color: N,
+              letterSpacing: "-0.03em",
+              lineHeight: 1.1,
             },
             children: [getReadinessTier(a.scoreAfter).label, "."],
           }),
           i.jsx("div", {
-            style: { fontSize: 13, color: b, marginTop: 6 },
+            style: {
+              fontSize: 13,
+              color: "rgba(255,255,255,0.55)",
+              marginTop: 8,
+            },
             children:
               u > 0
                 ? "Un passo avanti rispetto a ieri."
@@ -15174,99 +15243,95 @@ function nd({ t: a }) {
       }),
       i.jsxs("div", {
         style: {
-          marginTop: 6,
-          padding: 18,
-          backgroundColor: g,
-          color: N,
-          borderRadius: 16,
+          backgroundColor: "rgba(255,255,255,0.06)",
+          border: "1px solid rgba(255,255,255,0.12)",
+          borderRadius: 18,
+          padding: "18px 18px 4px",
         },
         children: [
-          i.jsx("div", {
-            style: {
-              fontSize: 10,
-              color: "#999",
-              letterSpacing: "0.12em",
-              textTransform: "uppercase",
-              marginBottom: 10,
-            },
-            children: "Readiness score",
-          }),
-          i.jsx(ql, { value: a.scoreAfter }),
-        ],
-      }),
-      i.jsxs("div", {
-        style: {
-          marginTop: 14,
-          padding: 14,
-          backgroundColor: id,
-          borderRadius: 12,
-        },
-        children: [
-          i.jsx("div", {
-            style: {
-              fontSize: 10,
-              color: me,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: 6,
-            },
-            children: "Punto forte di oggi",
+          i.jsxs("div", {
+            style: { paddingBottom: 16 },
+            children: [
+              i.jsx("div", {
+                style: {
+                  fontSize: 10,
+                  color: ae,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  marginBottom: 6,
+                },
+                children: "Punto forte",
+              }),
+              i.jsxs("div", {
+                style: { fontSize: 13, color: N, lineHeight: 1.55 },
+                children: [
+                  "Hai consolidato «",
+                  a.topicShort,
+                  "». Sai sostenerlo in una conversazione.",
+                ],
+              }),
+            ],
           }),
           i.jsxs("div", {
-            style: { fontSize: 12, color: me, lineHeight: 1.5 },
+            style: {
+              padding: "16px 0",
+              borderTop: "1px solid rgba(255,255,255,0.1)",
+            },
             children: [
-              "Hai consolidato «",
-              a.topicShort,
-              "». Sai sostenerlo in una conversazione.",
+              i.jsx("div", {
+                style: {
+                  fontSize: 10,
+                  color: "rgba(255,255,255,0.5)",
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  marginBottom: 6,
+                },
+                children: "Da rivedere",
+              }),
+              i.jsx("div", {
+                style: {
+                  fontSize: 13,
+                  color: "rgba(255,255,255,0.8)",
+                  lineHeight: 1.55,
+                },
+                children:
+                  a.daysToEvent > 5
+                    ? "L'apertura conversazionale resta il gap più grosso."
+                    : a.daysToEvent > 2
+                      ? "Sotto pressione tendi a fare definizioni invece di esempi."
+                      : "Ritmo del discorso: rallenta nei passaggi tecnici.",
+              }),
             ],
           }),
         ],
       }),
-      i.jsxs("div", {
+      i.jsx("div", {
         style: {
-          marginTop: 10,
-          padding: 14,
-          backgroundColor: jf,
-          borderRadius: 12,
+          marginTop: "auto",
+          paddingTop: 24,
+          fontSize: 12,
+          color: "rgba(255,255,255,0.5)",
+          textAlign: "center",
+          fontStyle: "italic",
         },
-        children: [
-          i.jsx("div", {
-            style: {
-              fontSize: 10,
-              color: He,
-              letterSpacing: "0.1em",
-              textTransform: "uppercase",
-              marginBottom: 6,
-            },
-            children: "Da rivedere domani",
-          }),
-          i.jsx("div", {
-            style: { fontSize: 12, color: He, lineHeight: 1.5 },
-            children:
-              a.daysToEvent > 5
-                ? "L'apertura conversazionale resta il gap più grosso."
-                : a.daysToEvent > 2
-                  ? "Sotto pressione tendi a fare definizioni invece di esempi."
-                  : "Ritmo del discorso: rallenta nei passaggi tecnici.",
-          }),
-        ],
+        children: '"' + popQ + '"',
       }),
       i.jsx("button", {
         onClick: () => (d == null ? void 0 : d.goNext()),
         style: {
-          marginTop: "auto",
+          marginTop: 14,
           marginBottom: 18,
-          padding: "14px 0",
+          padding: "15px 0",
           border: "none",
-          backgroundColor: g,
-          color: N,
+          backgroundColor: ae,
+          color: g,
           borderRadius: 100,
-          fontSize: 13,
-          fontWeight: 500,
+          fontSize: 14,
+          fontWeight: 700,
           cursor: "pointer",
           fontFamily: "inherit",
         },
-        children: "Prossima sessione →",
+        children: "Vai alla home →",
       }),
     ],
   });
@@ -16196,7 +16261,8 @@ function Yf() {
       },
       {
         label: `${d()} · Readiness score`,
-        phase: "F13 · Readiness score",
+        bg: g,
+        phase: "F13 · Feedback",
         goal: "Chiusura del ciclo.",
         insight: "I03 — Saprai dove sei prima di entrare.",
         render: () => i.jsx(nd, { t: v }),
@@ -16204,9 +16270,9 @@ function Yf() {
       {
         label: `${d()} · Home`,
         phase: "F06 · Dashboard",
-        goal: "Mostrare progresso, gap e prossima sessione in un colpo d'occhio.",
+        goal: "La home aggiornata al giorno successivo.",
         insight: "I06 — Aggiornamento ordinato, non FOMO.",
-        render: () => i.jsx(Rf, {}),
+        render: () => i.jsx(Rf, { day: 2 }),
       },
       {
         label: `${d()} · Piano 12 giorni`,
@@ -16268,10 +16334,18 @@ function Yf() {
         },
         {
           label: `${d()} · Readiness score`,
-          phase: "F13 · Readiness score",
+          bg: g,
+          phase: "F13 · Feedback",
           goal: "Aggiornamento del punteggio con delta e gap residui.",
           insight: "I03 — Togliere l'incertezza pre-evento.",
           render: () => i.jsx(nd, { t: j }),
+        },
+        {
+          label: `${d()} · Home`,
+          phase: "F06 · Dashboard",
+          goal: "La home aggiornata al giorno successivo.",
+          insight: "I06 — Aggiornamento ordinato, non FOMO.",
+          render: () => i.jsx(Rf, { day: Math.min(j.day + 1, 10) }),
         },
       ],
     });
@@ -16315,6 +16389,210 @@ function Yf() {
     }),
     u
   );
+}
+function RegistrationScreen() {
+  const a = _e(),
+    [step, setStep] = Z.useState("signup"),
+    inputStyle = {
+      width: "100%",
+      boxSizing: "border-box",
+      padding: "15px 16px",
+      backgroundColor: N,
+      border: `1px solid ${Q}`,
+      borderRadius: 14,
+      fontSize: 15,
+      color: g,
+      fontFamily: "inherit",
+      outline: "none",
+      marginBottom: 12,
+    },
+    ctaStyle = {
+      width: "100%",
+      padding: "16px 0",
+      border: "none",
+      backgroundColor: g,
+      color: N,
+      borderRadius: 100,
+      fontSize: 15,
+      fontWeight: 600,
+      cursor: "pointer",
+      fontFamily: "inherit",
+      marginTop: 8,
+    },
+    linkStyle = {
+      background: "none",
+      border: "none",
+      padding: 0,
+      marginTop: 16,
+      fontSize: 13,
+      color: b,
+      cursor: "pointer",
+      fontFamily: "inherit",
+      textAlign: "center",
+      width: "100%",
+      textDecoration: "underline",
+    },
+    headline = (t) =>
+      i.jsx("div", {
+        style: {
+          fontSize: 30,
+          fontWeight: 700,
+          color: g,
+          letterSpacing: "-0.03em",
+          lineHeight: 1.1,
+          marginBottom: 24,
+        },
+        children: t,
+      });
+  return i.jsxs("div", {
+    style: {
+      flex: 1,
+      display: "flex",
+      flexDirection: "column",
+      padding: "0 20px",
+      overflowY: "auto",
+    },
+    children: [
+      i.jsxs("div", {
+        style: {
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "8px 0 24px",
+        },
+        children: [
+          i.jsx("button", {
+            onClick: () => {
+              step === "signup"
+                ? a == null || a.goPrev()
+                : setStep(step === "confirm" ? "signup" : "signup");
+            },
+            style: {
+              background: "none",
+              border: "none",
+              padding: 0,
+              cursor: "pointer",
+              display: "flex",
+              alignItems: "center",
+            },
+            children: i.jsx(Qe, {}),
+          }),
+          i.jsx("div", {
+            style: { fontSize: 11, color: b, letterSpacing: "0.1em" },
+            children: "Account",
+          }),
+          i.jsx("div", { style: { width: 22 } }),
+        ],
+      }),
+      step === "signup" &&
+        i.jsxs(i.Fragment, {
+          children: [
+            headline("Inizia il tuo percorso"),
+            i.jsx("input", {
+              type: "email",
+              placeholder: "La tua email",
+              style: inputStyle,
+            }),
+            i.jsx("input", {
+              type: "password",
+              placeholder: "Scegli una password",
+              style: { ...inputStyle, marginBottom: 6 },
+            }),
+            i.jsx("div", {
+              style: { fontSize: 11, color: b, marginBottom: 12, paddingLeft: 4 },
+              children: "Almeno 8 caratteri",
+            }),
+            i.jsx("button", {
+              onClick: () => setStep("confirm"),
+              style: ctaStyle,
+              children: "Crea account",
+            }),
+            i.jsx("button", {
+              onClick: () => setStep("login"),
+              style: linkStyle,
+              children: "Hai già un account? Accedi",
+            }),
+          ],
+        }),
+      step === "confirm" &&
+        i.jsxs(i.Fragment, {
+          children: [
+            headline("Controlla la tua inbox"),
+            i.jsx("div", {
+              style: {
+                fontSize: 14,
+                color: b,
+                lineHeight: 1.55,
+                marginBottom: 24,
+              },
+              children:
+                "Ti abbiamo inviato un link di conferma. Clicca per attivare il tuo account.",
+            }),
+            i.jsx("button", {
+              onClick: () => setStep("login"),
+              style: ctaStyle,
+              children: "Ho confermato →",
+            }),
+            i.jsx("button", {
+              onClick: () => {},
+              style: linkStyle,
+              children: "Non l'hai ricevuta? Invia di nuovo",
+            }),
+          ],
+        }),
+      step === "login" &&
+        i.jsxs(i.Fragment, {
+          children: [
+            headline("Bentornato"),
+            i.jsx("input", {
+              type: "email",
+              placeholder: "La tua email",
+              style: inputStyle,
+            }),
+            i.jsx("input", {
+              type: "password",
+              placeholder: "La tua password",
+              style: { ...inputStyle, marginBottom: 6 },
+            }),
+            i.jsx("button", {
+              onClick: () => setStep("reset"),
+              style: { ...linkStyle, textAlign: "left", marginTop: 6, marginBottom: 8 },
+              children: "Password dimenticata?",
+            }),
+            i.jsx("button", {
+              onClick: () => (a == null ? void 0 : a.goNext()),
+              style: ctaStyle,
+              children: "Accedi",
+            }),
+          ],
+        }),
+      step === "reset" &&
+        i.jsxs(i.Fragment, {
+          children: [
+            headline("Reimposta la password"),
+            i.jsx("div", {
+              style: {
+                fontSize: 14,
+                color: b,
+                lineHeight: 1.55,
+                marginBottom: 24,
+              },
+              children: "Inserisci la tua email e ti mandiamo un link.",
+            }),
+            i.jsx("input", {
+              type: "email",
+              placeholder: "La tua email",
+              style: inputStyle,
+            }),
+            i.jsx("button", {
+              onClick: () => setStep("login"),
+              style: ctaStyle,
+              children: "Invia link",
+            }),
+          ],
+        }),
+    ],
+  });
 }
 const Yl = [
   {
@@ -16392,6 +16670,13 @@ const Yl = [
         goal: "Trasformare l'intenzione in piano costruito.",
         insight: "I07 — 65% ha già un evento nei prossimi 3 mesi.",
         render: () => i.jsx(Wf, {}),
+      },
+      {
+        label: "10b · Registrazione",
+        phase: "F05 · Attivazione",
+        goal: "Creare l'account: email e password, conferma, login.",
+        insight: "Bassa friction, nessun provider terzo, recupero semplice.",
+        render: () => i.jsx(RegistrationScreen, {}),
       },
     ],
   },
