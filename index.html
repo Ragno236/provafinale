@@ -17161,14 +17161,23 @@ function Xf({ current: a, onPick: d }) {
 }
 function Zf() {
   const [a, d] = Z.useState(0),
+    [P, _] = Z.useState("forward"),
     u = Se[a],
     h = Se.length,
-    v = (k) => d((j) => Math.max(0, Math.min(h - 1, j + k)));
+    v = (k) => {
+      _(k < 0 ? "back" : "forward");
+      d((j) => Math.max(0, Math.min(h - 1, j + k)));
+    },
+    V = (k) => {
+      const j = Math.max(0, Math.min(h - 1, k));
+      _(j === a ? "neutral" : j > a ? "forward" : "back");
+      d(j);
+    };
   return i.jsx(Vl.Provider, {
     value: {
       goNext: () => v(1),
       goPrev: () => v(-1),
-      goToIndex: (k) => d(Math.max(0, Math.min(h - 1, k))),
+      goToIndex: V,
     },
     children: i.jsxs("div", {
       style: {
@@ -17188,6 +17197,8 @@ function Zf() {
           },
           children: [
             i.jsx("div", {
+              className: "prototype-stage",
+              "data-motion": P,
               style: { paddingTop: 24 },
               children: i.jsx(ld, {
                 label: u.label,
@@ -17288,14 +17299,14 @@ function Jf() {
           transform-origin: 50% 52%;
           will-change: opacity, transform, filter;
           backface-visibility: hidden;
-          animation: smartForward 0.34s cubic-bezier(0.2, 0.8, 0.2, 1);
+          animation: smartForward 0.52s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .mobile-proto-screen[data-motion="back"] {
           animation-name: smartBack;
         }
         .mobile-proto-screen[data-motion="neutral"] {
           animation-name: smartFade;
-          animation-duration: 0.22s;
+          animation-duration: 0.32s;
         }
         .mobile-proto-screen > * { min-height: 0; }
         /* WCAG fix: 2.4.11 AA — interactive focus indicator da none (0.00:1) a outline #0A0A0A + ring #E8FF5A (#0A0A0A vs #FFFFFF 19.80:1, #E8FF5A vs #0A0A0A 17.80:1) */
@@ -17314,21 +17325,18 @@ function Jf() {
           }
         }
         @keyframes smartForward {
-          0% { opacity: 0; transform: translate3d(28px, 0, 0) scale(0.985); filter: blur(1.5px); }
-          58% { opacity: 1; transform: translate3d(-2px, 0, 0) scale(1.002); filter: blur(0); }
+          0% { opacity: 0; transform: translate3d(72px, 0, 0) scale(0.94); filter: blur(6px); }
+          62% { opacity: 1; transform: translate3d(-8px, 0, 0) scale(1.015); filter: blur(0); }
           100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
         @keyframes smartBack {
-          0% { opacity: 0; transform: translate3d(-28px, 0, 0) scale(0.985); filter: blur(1.5px); }
-          58% { opacity: 1; transform: translate3d(2px, 0, 0) scale(1.002); filter: blur(0); }
+          0% { opacity: 0; transform: translate3d(-72px, 0, 0) scale(0.94); filter: blur(6px); }
+          62% { opacity: 1; transform: translate3d(8px, 0, 0) scale(1.015); filter: blur(0); }
           100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
         @keyframes smartFade {
-          0% { opacity: 0; transform: translate3d(0, 8px, 0) scale(0.99); }
-          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .mobile-proto-screen { animation: none !important; }
+          0% { opacity: 0; transform: translate3d(0, 24px, 0) scale(0.96); filter: blur(4px); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
       `,
       }),
@@ -17531,8 +17539,29 @@ function tp() {
           font-family: 'Helvetica Neue', Helvetica, sans-serif !important;
         }
         .readiness-proto button { font-family: inherit; }
+        .prototype-stage {
+          transform-origin: 50% 54%;
+          will-change: opacity, transform, filter;
+          animation: smartForward 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .prototype-stage[data-motion="back"] { animation-name: smartBack; }
+        .prototype-stage[data-motion="neutral"] { animation-name: smartFade; animation-duration: 0.32s; }
         .readiness-proto *::-webkit-scrollbar { width: 0; height: 0; display: none; }
         .readiness-proto * { scrollbar-width: none; -ms-overflow-style: none; }
+        @keyframes smartForward {
+          0% { opacity: 0; transform: translate3d(96px, 0, 0) scale(0.94); filter: blur(6px); }
+          62% { opacity: 1; transform: translate3d(-10px, 0, 0) scale(1.015); filter: blur(0); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+        }
+        @keyframes smartBack {
+          0% { opacity: 0; transform: translate3d(-96px, 0, 0) scale(0.94); filter: blur(6px); }
+          62% { opacity: 1; transform: translate3d(10px, 0, 0) scale(1.015); filter: blur(0); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+        }
+        @keyframes smartFade {
+          0% { opacity: 0; transform: translate3d(0, 24px, 0) scale(0.96); filter: blur(4px); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+        }
         
         @keyframes shake {
           0%, 100% { transform: translateX(0); }
