@@ -17253,10 +17253,14 @@ function Zf() {
 }
 function Jf() {
   const [a, d] = Z.useState(0),
+    [A, R] = Z.useState("forward"),
     u = Se[a],
     h = Se.length,
     v = Z.useRef(null),
-    k = (_) => d((V) => Math.max(0, Math.min(h - 1, V + _))),
+    k = (_) => {
+      R(_ < 0 ? "back" : "forward");
+      d((V) => Math.max(0, Math.min(h - 1, V + _)));
+    },
     j = (_) => {
       v.current = _.touches[0].clientX;
     },
@@ -17264,18 +17268,35 @@ function Jf() {
       if (v.current === null) return;
       const V = _.changedTouches[0].clientX - v.current;
       (Math.abs(V) > 60 && k(V < 0 ? 1 : -1), (v.current = null));
+    },
+    M = (_) => {
+      const V = Math.max(0, Math.min(h - 1, _));
+      R(V === a ? "neutral" : V > a ? "forward" : "back");
+      d(V);
     };
   return i.jsxs(Vl.Provider, {
     value: {
       goNext: () => k(1),
       goPrev: () => k(-1),
-      goToIndex: (_) => d(Math.max(0, Math.min(h - 1, _))),
+      goToIndex: M,
     },
     children: [
       i.jsx("style", {
         children: `
         html, body, #root { height: 100%; margin: 0; padding: 0; overflow: hidden; }
-        .mobile-proto-screen { animation: slideIn 0.22s ease-out; }
+        .mobile-proto-screen {
+          transform-origin: 50% 52%;
+          will-change: opacity, transform, filter;
+          backface-visibility: hidden;
+          animation: smartForward 0.34s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .mobile-proto-screen[data-motion="back"] {
+          animation-name: smartBack;
+        }
+        .mobile-proto-screen[data-motion="neutral"] {
+          animation-name: smartFade;
+          animation-duration: 0.22s;
+        }
         .mobile-proto-screen > * { min-height: 0; }
         /* WCAG fix: 2.4.11 AA — interactive focus indicator da none (0.00:1) a outline #0A0A0A + ring #E8FF5A (#0A0A0A vs #FFFFFF 19.80:1, #E8FF5A vs #0A0A0A 17.80:1) */
         .mobile-proto-screen button:focus-visible,
@@ -17292,7 +17313,23 @@ function Jf() {
             color: #595955 !important;
           }
         }
-        @keyframes slideIn { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
+        @keyframes smartForward {
+          0% { opacity: 0; transform: translate3d(28px, 0, 0) scale(0.985); filter: blur(1.5px); }
+          58% { opacity: 1; transform: translate3d(-2px, 0, 0) scale(1.002); filter: blur(0); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+        }
+        @keyframes smartBack {
+          0% { opacity: 0; transform: translate3d(-28px, 0, 0) scale(0.985); filter: blur(1.5px); }
+          58% { opacity: 1; transform: translate3d(2px, 0, 0) scale(1.002); filter: blur(0); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+        }
+        @keyframes smartFade {
+          0% { opacity: 0; transform: translate3d(0, 8px, 0) scale(0.99); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .mobile-proto-screen { animation: none !important; }
+        }
       `,
       }),
       i.jsxs("div", {
@@ -17380,6 +17417,7 @@ function Jf() {
             "div",
             {
               className: "mobile-proto-screen",
+              "data-motion": A,
               style: {
                 flex: 1,
                 display: "flex",
