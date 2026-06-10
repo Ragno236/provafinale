@@ -17299,14 +17299,14 @@ function Jf() {
           transform-origin: 50% 52%;
           will-change: opacity, transform, filter;
           backface-visibility: hidden;
-          animation: smartForward 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+          animation: smartForward 0.28s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .mobile-proto-screen[data-motion="back"] {
           animation-name: smartBack;
         }
         .mobile-proto-screen[data-motion="neutral"] {
           animation-name: smartFade;
-          animation-duration: 0.32s;
+          animation-duration: 0.22s;
         }
         .mobile-proto-screen > * { min-height: 0; }
         /* WCAG fix: 2.4.11 AA — interactive focus indicator da none (0.00:1) a outline #0A0A0A + ring #E8FF5A (#0A0A0A vs #FFFFFF 19.80:1, #E8FF5A vs #0A0A0A 17.80:1) */
@@ -17325,17 +17325,17 @@ function Jf() {
           }
         }
         @keyframes smartForward {
-          0% { opacity: 0; transform: translate3d(72px, 0, 0) scale(0.94); filter: blur(6px); }
-          62% { opacity: 1; transform: translate3d(-8px, 0, 0) scale(1.015); filter: blur(0); }
+          0% { opacity: 0; transform: translate3d(0, 10px, 0) scale(0.985); filter: blur(1.4px); }
+          72% { opacity: 1; transform: translate3d(0, -1px, 0) scale(1.002); filter: blur(0); }
           100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
         @keyframes smartBack {
-          0% { opacity: 0; transform: translate3d(-72px, 0, 0) scale(0.94); filter: blur(6px); }
-          62% { opacity: 1; transform: translate3d(8px, 0, 0) scale(1.015); filter: blur(0); }
+          0% { opacity: 0; transform: translate3d(0, -10px, 0) scale(0.985); filter: blur(1.4px); }
+          72% { opacity: 1; transform: translate3d(0, 1px, 0) scale(1.002); filter: blur(0); }
           100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
         @keyframes smartFade {
-          0% { opacity: 0; transform: translate3d(0, 24px, 0) scale(0.96); filter: blur(4px); }
+          0% { opacity: 0; transform: translate3d(0, 6px, 0) scale(0.99); filter: blur(1px); }
           100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
       `,
@@ -17542,24 +17542,24 @@ function tp() {
         .prototype-stage {
           transform-origin: 50% 54%;
           will-change: opacity, transform, filter;
-          animation: smartForward 0.52s cubic-bezier(0.16, 1, 0.3, 1);
+          animation: smartForward 0.28s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .prototype-stage[data-motion="back"] { animation-name: smartBack; }
-        .prototype-stage[data-motion="neutral"] { animation-name: smartFade; animation-duration: 0.32s; }
+        .prototype-stage[data-motion="neutral"] { animation-name: smartFade; animation-duration: 0.22s; }
         .readiness-proto *::-webkit-scrollbar { width: 0; height: 0; display: none; }
         .readiness-proto * { scrollbar-width: none; -ms-overflow-style: none; }
         @keyframes smartForward {
-          0% { opacity: 0; transform: translate3d(96px, 0, 0) scale(0.94); filter: blur(6px); }
-          62% { opacity: 1; transform: translate3d(-10px, 0, 0) scale(1.015); filter: blur(0); }
+          0% { opacity: 0; transform: translate3d(0, 12px, 0) scale(0.985); filter: blur(1.6px); }
+          72% { opacity: 1; transform: translate3d(0, -1px, 0) scale(1.002); filter: blur(0); }
           100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
         @keyframes smartBack {
-          0% { opacity: 0; transform: translate3d(-96px, 0, 0) scale(0.94); filter: blur(6px); }
-          62% { opacity: 1; transform: translate3d(10px, 0, 0) scale(1.015); filter: blur(0); }
+          0% { opacity: 0; transform: translate3d(0, -12px, 0) scale(0.985); filter: blur(1.6px); }
+          72% { opacity: 1; transform: translate3d(0, 1px, 0) scale(1.002); filter: blur(0); }
           100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
         @keyframes smartFade {
-          0% { opacity: 0; transform: translate3d(0, 24px, 0) scale(0.96); filter: blur(4px); }
+          0% { opacity: 0; transform: translate3d(0, 8px, 0) scale(0.99); filter: blur(1px); }
           100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
         
