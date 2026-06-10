@@ -10687,9 +10687,11 @@ function Df() {
           flex: 1,
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
           overflowY: "auto",
           minHeight: 0,
+          textAlign: "center",
         },
         children: [
           i.jsx("div", {
@@ -10710,6 +10712,7 @@ function Df() {
               letterSpacing: "-0.05em",
               lineHeight: 0.88,
               textTransform: "uppercase",
+              textAlign: "center",
             },
             children: ["READI", i.jsx("br", {}), "NESS", i.jsx("span", { style: { color: ae }, children: "." })],
           }),
@@ -10720,7 +10723,8 @@ function Df() {
               lineHeight: 1.4,
               letterSpacing: "-0.015em",
               marginTop: 28,
-              maxWidth: 320,
+              maxWidth: 300,
+              textAlign: "center",
             },
             children:
               "Ogni momento può diventare un'occasione importante.",
@@ -17299,7 +17303,7 @@ function Jf() {
           transform-origin: 50% 52%;
           will-change: opacity, transform, filter;
           backface-visibility: hidden;
-          animation: smartForward 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+          animation: smartForward 0.28s ease;
         }
         .mobile-proto-screen[data-motion="back"] {
           animation-name: smartBack;
@@ -17542,7 +17546,7 @@ function tp() {
         .prototype-stage {
           transform-origin: 50% 54%;
           will-change: opacity, transform, filter;
-          animation: smartForward 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+          animation: smartForward 0.28s ease;
         }
         .prototype-stage[data-motion="back"] { animation-name: smartBack; }
         .prototype-stage[data-motion="neutral"] { animation-name: smartFade; animation-duration: 0.22s; }
