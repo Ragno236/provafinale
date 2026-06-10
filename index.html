@@ -12772,8 +12772,8 @@ function ad({
       position: "relative",
       width: "100%",
       aspectRatio: "auto",
-      height: "min(500px, calc(100vh - 330px))",
-      minHeight: 420,
+      height: "calc(100svh - 248px)",
+      minHeight: 540,
       borderRadius: "32px",
       overflow: "hidden",
       backgroundColor: "#0A0A0A",
@@ -12919,12 +12919,16 @@ function ad({
               gap: 10,
               width: "100%",
               zIndex: 10,
-            },
-            children: [
-              i.jsx("button", {
-                onClick: (C) => {
-                  (C.stopPropagation(), q(0), D(!1), G(!0));
                 },
+                children: [
+                  i.jsx("button", {
+                    onClick: (C) => {
+                      if (C.stopPropagation(), se && !H && V < 100) {
+                        (q(100), D(!0), G(!1));
+                        return;
+                      }
+                      (q(0), D(!1), G(!0));
+                    },
                 style: {
                   flex: "1.35 1 0",
                   padding: "13px 12px",
@@ -14143,7 +14147,7 @@ function ed({ t: a }) {
           })
         : Ne
           ? i.jsx("div", {
-              style: { marginBottom: 16 },
+              style: { flex: 1, minHeight: 0, marginBottom: 0 },
               children: i.jsx(ad, {
                 videoUrl: F.videoUrl || "",
                 conceptNumber: u + 1,
