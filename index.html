@@ -9708,7 +9708,7 @@ function sd({ active: a }) {
           );
           v !== -1 && d.goToIndex(v);
         } else if (h === 3) {
-          const v = Se.findIndex((k) => k.label.includes("· Feedback"));
+          const v = Se.findIndex((k) => k.label.includes("· Profilo"));
           v !== -1 && d.goToIndex(v);
         }
       }
@@ -9777,7 +9777,24 @@ function Rf({ day: dayProp }) {
               justifyContent: "space-between",
               padding: "8px 20px 4px",
             },
-            children: [i.jsx(od, {}), i.jsx(kf, { badge: !0 })],
+            children: [
+              i.jsx(od, {}),
+              i.jsx("button", {
+                onClick: () => {
+                  const k = Se.findIndex((j) => j.label.includes("· Profilo"));
+                  k !== -1 && a != null && a.goToIndex && a.goToIndex(k);
+                },
+                style: {
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                },
+                children: i.jsx(kf, { badge: !0 }),
+              }),
+            ],
           }),
           i.jsxs("div", {
             style: { padding: "16px 20px 4px" },
@@ -16613,6 +16630,235 @@ function RegistrationScreen() {
     ],
   });
 }
+function ProfileScreen() {
+  const a = _e(),
+    [notifications, setNotifications] = Z.useState(!0),
+    [language, setLanguage] = Z.useState("Italiano");
+  const row = (label, value, action, active = !1) =>
+    i.jsxs("button", {
+      onClick: action,
+      style: {
+        width: "100%",
+        padding: "14px 0",
+        background: "none",
+        border: "none",
+        borderBottom: `1px solid ${Q}`,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        cursor: "pointer",
+        fontFamily: "inherit",
+        textAlign: "left",
+      },
+      children: [
+        i.jsx("span", {
+          style: { fontSize: 14, color: g, fontWeight: 500 },
+          children: label,
+        }),
+        i.jsx("span", {
+          style: {
+            fontSize: 13,
+            color: active ? g : b,
+            fontWeight: active ? 700 : 500,
+          },
+          children: value,
+        }),
+      ],
+    });
+  return i.jsxs(i.Fragment, {
+    children: [
+      i.jsxs("div", {
+        style: {
+          flex: 1,
+          overflowY: "auto",
+          display: "flex",
+          flexDirection: "column",
+          padding: "8px 20px 18px",
+        },
+        children: [
+          i.jsxs("div", {
+            style: {
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "8px 0 20px",
+            },
+            children: [
+              i.jsx("button", {
+                onClick: () => (a == null ? void 0 : a.goPrev()),
+                style: {
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                },
+                children: i.jsx(Qe, {}),
+              }),
+              i.jsx("div", {
+                style: { fontSize: 11, color: b, letterSpacing: "0.1em" },
+                children: "Profilo",
+              }),
+              i.jsx("div", { style: { width: 22 } }),
+            ],
+          }),
+          i.jsxs("div", {
+            style: {
+              display: "flex",
+              alignItems: "center",
+              gap: 14,
+              padding: "4px 0 22px",
+            },
+            children: [
+              i.jsx("div", {
+                style: {
+                  width: 64,
+                  height: 64,
+                  borderRadius: "50%",
+                  backgroundColor: g,
+                  color: ae,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: 22,
+                  fontWeight: 800,
+                  letterSpacing: "-0.04em",
+                },
+                children: "S",
+              }),
+              i.jsxs("div", {
+                children: [
+                  i.jsx("div", {
+                    style: {
+                      fontSize: 28,
+                      fontWeight: 700,
+                      color: g,
+                      letterSpacing: "-0.035em",
+                      lineHeight: 1,
+                    },
+                    children: "Simone",
+                  }),
+                  i.jsx("div", {
+                    style: { fontSize: 13, color: b, marginTop: 6 },
+                    children: "Talent Garden Talk · AI & Lavoro",
+                  }),
+                ],
+              }),
+            ],
+          }),
+          i.jsxs("div", {
+            style: {
+              backgroundColor: g,
+              borderRadius: 18,
+              padding: 18,
+              color: N,
+              marginBottom: 14,
+            },
+            children: [
+              i.jsx("div", {
+                style: {
+                  fontSize: 10,
+                  color: "rgba(255,255,255,0.5)",
+                  letterSpacing: "0.14em",
+                  textTransform: "uppercase",
+                  marginBottom: 8,
+                },
+                children: "Percorso attivo",
+              }),
+              i.jsx("div", {
+                style: {
+                  fontSize: 16,
+                  fontWeight: 700,
+                  letterSpacing: "-0.02em",
+                  lineHeight: 1.25,
+                },
+                children: "Giorno 2 di 12",
+              }),
+              i.jsx("div", {
+                style: {
+                  fontSize: 12,
+                  color: "rgba(255,255,255,0.72)",
+                  marginTop: 6,
+                  lineHeight: 1.45,
+                },
+                children: "Obiettivo: arrivare alla presentazione con argomenti chiari e apertura più solida.",
+              }),
+            ],
+          }),
+          i.jsxs("div", {
+            style: {
+              backgroundColor: N,
+              border: `1px solid ${Q}`,
+              borderRadius: 16,
+              padding: "4px 16px 0",
+              marginBottom: 14,
+            },
+            children: [
+              row(
+                "Notifiche",
+                notifications ? "Attive" : "Disattive",
+                () => setNotifications((v) => !v),
+                notifications,
+              ),
+              row(
+                "Lingua",
+                language,
+                () => setLanguage((v) => (v === "Italiano" ? "English" : "Italiano")),
+              ),
+              row("Account", "simone@email.it", () => {}),
+            ],
+          }),
+          i.jsxs("div", {
+            style: {
+              backgroundColor: pt,
+              border: `1px solid ${Q}`,
+              borderRadius: 16,
+              padding: 16,
+              marginBottom: 16,
+            },
+            children: [
+              i.jsx("div", {
+                style: {
+                  fontSize: 10,
+                  color: b,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  marginBottom: 8,
+                },
+                children: "Preferenze sessione",
+              }),
+              i.jsx("div", {
+                style: { fontSize: 13, color: g, lineHeight: 1.5 },
+                children: "Formato consigliato: video pill con sottotitoli. Promemoria giornaliero: 18:30.",
+              }),
+            ],
+          }),
+          i.jsx("button", {
+            onClick: () => {
+              const d = Se.findIndex((u) => u.label.includes("Welcome"));
+              d !== -1 && a != null && a.goToIndex && a.goToIndex(d);
+            },
+            style: {
+              width: "100%",
+              padding: "15px 0",
+              backgroundColor: N,
+              color: g,
+              border: `1px solid ${g}`,
+              borderRadius: 100,
+              fontSize: 14,
+              fontWeight: 600,
+              cursor: "pointer",
+              fontFamily: "inherit",
+            },
+            children: "Logout",
+          }),
+        ],
+      }),
+      i.jsx(sd, { active: 3 }),
+    ],
+  });
+}
 const Yl = [
   {
     day: "Giorno 0",
@@ -16700,6 +16946,20 @@ const Yl = [
     ],
   },
   ...Yf(),
+  {
+    day: "Account",
+    title: "Profilo utente",
+    body: "Area personale raggiungibile dalla navbar: avatar, dati utente, notifiche, lingua e logout.",
+    screens: [
+      {
+        label: "Profilo · Profilo",
+        phase: "F16 · Account",
+        goal: "Rendere accessibili preferenze e stato utente dalla navbar.",
+        insight: "La navigazione deve chiudere anche il circuito account.",
+        render: () => i.jsx(ProfileScreen, {}),
+      },
+    ],
+  },
 ];
 function gd({ s: a }) {
   return i.jsxs("div", {
