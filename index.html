@@ -12934,7 +12934,7 @@ function ad({
                   fontFamily: "inherit",
                   backdropFilter: "blur(8px)",
                 },
-                children: H || V >= 100 ? "Ascolta di nuovo" : "Inizia",
+                children: H || V >= 100 ? "Ascolta di nuovo" : se ? "Salta" : "Inizia",
               }),
               H &&
                 i.jsx("button", {
