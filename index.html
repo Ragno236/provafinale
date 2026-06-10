@@ -9255,9 +9255,11 @@ function _e() {
 const rd = "#FFFFFF",
   g = "#0A0A0A",
   N = "#FFFFFF",
-  b = "#8E8E89",
+  /* WCAG fix: 1.4.3 AA — b secondary text on #FFFFFF da #8E8E89 (3.29:1) a #767671 (4.57:1) */
+  b = "#767671",
   pt = "#FBFAF6",
-  Q = "#E4E3DD",
+  /* WCAG fix: 1.4.11 AA — Q component border on #FFFFFF da #E4E3DD (1.29:1) a #94948F (3.05:1) */
+  Q = "#94948F",
   ae = "#E8FF5A",
   me = "#1A6B3C",
   id = "#EBF5EF",
@@ -9627,7 +9629,8 @@ function ql({ value: a }) {
       i.jsx("div", {
         style: {
           fontSize: 11,
-          color: "#C8C7C3",
+          /* WCAG fix: 1.4.3 AA — ReadinessBadge easter egg text on #FFFFFF da #C8C7C3 (1.69:1) a #767671 (4.57:1) */
+          color: b,
           marginTop: 4,
           textAlign: "center",
           fontStyle: "italic",
@@ -9829,7 +9832,8 @@ function Rf({ day: dayProp }) {
                       i.jsx("div", {
                         style: {
                           fontSize: 10,
-                          color: "rgba(255,255,255,0.45)",
+                          /* WCAG fix: 1.4.3 AA — dark-card eyebrow text on #0A0A0A da rgba(255,255,255,0.45) (4.48:1) a rgba(255,255,255,0.5) (5.29:1) */
+                          color: "rgba(255,255,255,0.5)",
                           letterSpacing: "0.14em",
                           textTransform: "uppercase",
                         },
@@ -10216,7 +10220,8 @@ function Rf({ day: dayProp }) {
                       i.jsx("div", {
                         style: {
                           fontSize: 10,
-                          color: "rgba(255,255,255,0.45)",
+                          /* WCAG fix: 1.4.3 AA — dark-card eyebrow text on #0A0A0A da rgba(255,255,255,0.45) (4.48:1) a rgba(255,255,255,0.5) (5.29:1) */
+                          color: "rgba(255,255,255,0.5)",
                           letterSpacing: "0.12em",
                           textTransform: "uppercase",
                         },
@@ -11619,7 +11624,7 @@ function Wf() {
                   color: g,
                   letterSpacing: "-0.01em",
                   fontFamily: "inherit",
-                  outline: "none",
+                  outline: "2px solid transparent",
                 },
               }),
             ],
@@ -11657,7 +11662,7 @@ function Wf() {
                       fontSize: 15,
                       color: g,
                       fontFamily: "inherit",
-                      outline: "none",
+                      outline: "2px solid transparent",
                       padding: "6px 0",
                     },
                   }),
@@ -13082,7 +13087,7 @@ function ud({ pairs: a, onComplete: d }) {
                   onClick: () => D && G(D, C),
                   style: {
                     minHeight: 40,
-                    border: Y ? `2px solid ${me}` : "2px dashed #E4E3DD",
+                    border: Y ? `2px solid ${me}` : `2px dashed ${Q}`,
                     borderRadius: 10,
                     padding: "10px 14px",
                     fontFamily: "Inter, sans-serif",
@@ -13215,7 +13220,7 @@ function dd({ items: a, correctOrder: d, onComplete: u }) {
                       height: "14",
                       viewBox: "0 0 24 24",
                       fill: "none",
-                      stroke: "#E4E3DD",
+                      stroke: Q,
                       strokeWidth: "2.5",
                       children: [
                         i.jsx("line", { x1: "4", y1: "8", x2: "20", y2: "8" }),
@@ -13642,7 +13647,7 @@ function pd({ target: a, hint: d, onComplete: u }) {
           const R = G !== null,
             C = (G == null ? void 0 : G.word) === h.current[A];
           let F = "transparent",
-            Y = "#E4E3DD",
+            Y = Q,
             te = g;
           return (
             _ && R
@@ -13655,7 +13660,7 @@ function pd({ target: a, hint: d, onComplete: u }) {
               {
                 onClick: () => R && H(A),
                 style: {
-                  borderBottom: R ? "none" : "1.5px solid #E4E3DD",
+                  borderBottom: R ? "none" : `1.5px solid ${Q}`,
                   border: R ? `1px solid ${Y}` : void 0,
                   backgroundColor: F,
                   color: te,
@@ -14007,12 +14012,12 @@ function ed({ t: a }) {
                   style: {
                     padding: "4px 10px",
                     backgroundColor: "#FBFAF6",
-                    border: "1px solid #E4E3DD",
+                    border: `1px solid ${Q}`,
                     borderRadius: "100px",
                     fontFamily: "Inter, sans-serif",
                     fontSize: "11px",
                     fontWeight: 500,
-                    color: "#8E8E89",
+                    color: b,
                     cursor: "pointer",
                     userSelect: "none",
                   },
@@ -14046,7 +14051,7 @@ function ed({ t: a }) {
                 height: 3,
                 borderRadius: 100,
                 backgroundColor:
-                  j[re] !== null ? g : re === u ? "#888" : "#E4E3DD",
+                  j[re] !== null ? g : re === u ? "#888" : Q,
               },
             },
             re,
@@ -14089,7 +14094,7 @@ function ed({ t: a }) {
             style: {
               backgroundColor: N,
               borderRadius: 16,
-              border: "1px solid #E4E3DD",
+              border: `1px solid ${Q}`,
               padding: 20,
               margin: "0 0px 16px 0px",
               boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
@@ -14457,7 +14462,8 @@ function ed({ t: a }) {
 function td({ t: a }) {
   const d = a.mode === "voice" || a.mode === "simulation",
     u = d ? N : g,
-    h = d ? "#999" : b,
+    /* WCAG fix: 1.4.6 AAA — dark-mode secondary text on #0A0A0A da #999999 (6.95:1) a #9D9D9D (7.30:1) */
+    h = d ? "#9D9D9D" : b,
     v = d ? "#181818" : pt,
     k = d ? "#262626" : Q,
     j = _e(),
@@ -14872,7 +14878,12 @@ function Qf({ t: a }) {
             children: i.jsx(Qe, { color: N }),
           }),
           i.jsx("div", {
-            style: { fontSize: 11, color: "#999", letterSpacing: "0.1em" },
+            style: {
+              fontSize: 11,
+              /* WCAG fix: 1.4.6 AAA — simulation label text on #0A0A0A da #999999 (6.95:1) a #9D9D9D (7.30:1) */
+              color: "#9D9D9D",
+              letterSpacing: "0.1em",
+            },
             children: "Simulazione",
           }),
           i.jsx("button", {
@@ -14906,7 +14917,8 @@ function Qf({ t: a }) {
               i.jsxs("div", {
                 style: {
                   fontSize: 10,
-                  color: "#999",
+                  /* WCAG fix: 1.4.6 AAA — simulation eyebrow text on #0A0A0A da #999999 (6.95:1) a #9D9D9D (7.30:1) */
+                  color: "#9D9D9D",
                   letterSpacing: "0.16em",
                   textTransform: "uppercase",
                 },
@@ -14944,7 +14956,11 @@ function Qf({ t: a }) {
                 children: "08:24",
               }),
               i.jsx("div", {
-                style: { fontSize: 12, color: "#999" },
+                style: {
+                  fontSize: 12,
+                  /* WCAG fix: 1.4.6 AAA — simulation meta text on #0A0A0A da #999999 (6.95:1) a #9D9D9D (7.30:1) */
+                  color: "#9D9D9D",
+                },
                 children: "/ 15:00 rimanenti",
               }),
             ],
@@ -14974,7 +14990,8 @@ function Qf({ t: a }) {
                     fontSize: 10,
                     letterSpacing: "0.08em",
                     backgroundColor: h <= 3 ? ae : "#181818",
-                    color: h <= 3 ? g : "#666",
+                    /* WCAG fix: 1.4.3 AA — inactive round text on #181818 da #666666 (3.09:1) a #9D9D9D (6.55:1) */
+                    color: h <= 3 ? g : "#9D9D9D",
                     borderRadius: 6,
                     fontWeight: 500,
                   },
@@ -15011,7 +15028,8 @@ function Qf({ t: a }) {
                     fontSize: 9,
                     letterSpacing: "0.12em",
                     textTransform: "uppercase",
-                    color: h.who === "ai" ? ae : "#666",
+                    /* WCAG fix: 1.4.3 AA — speaker label text on #0A0A0A da #666666 (3.45:1) a #9D9D9D (7.30:1) */
+                    color: h.who === "ai" ? ae : "#9D9D9D",
                     marginBottom: 6,
                   },
                   children: [
@@ -15083,7 +15101,8 @@ function Qf({ t: a }) {
             style: {
               textAlign: "center",
               fontSize: 10,
-              color: "#999",
+              /* WCAG fix: 1.4.6 AAA — recording status text on #0A0A0A da #999999 (6.95:1) a #9D9D9D (7.30:1) */
+              color: "#9D9D9D",
               letterSpacing: "0.12em",
               textTransform: "uppercase",
               marginTop: 4,
@@ -16139,7 +16158,7 @@ function qf({ b: a, t: d }) {
         style: {
           backgroundColor: N,
           borderRadius: 16,
-          border: "1px solid #E4E3DD",
+          border: `1px solid ${Q}`,
           padding: 20,
           boxShadow: "0 2px 8px rgba(0,0,0,0.02)",
         },
@@ -16393,7 +16412,7 @@ function RegistrationScreen() {
       fontSize: 15,
       color: g,
       fontFamily: "inherit",
-      outline: "none",
+      outline: "2px solid transparent",
       marginBottom: 12,
     },
     ctaStyle = {
@@ -17009,6 +17028,21 @@ function Jf() {
         html, body, #root { height: 100%; margin: 0; padding: 0; overflow: hidden; }
         .mobile-proto-screen { animation: slideIn 0.22s ease-out; }
         .mobile-proto-screen > * { min-height: 0; }
+        /* WCAG fix: 2.4.11 AA — interactive focus indicator da none (0.00:1) a outline #0A0A0A + ring #E8FF5A (#0A0A0A vs #FFFFFF 19.80:1, #E8FF5A vs #0A0A0A 17.80:1) */
+        .mobile-proto-screen button:focus-visible,
+        .mobile-proto-screen input:focus-visible,
+        .mobile-proto-screen [role="button"]:focus-visible {
+          outline: 2px solid #0A0A0A !important;
+          outline-offset: 3px;
+          box-shadow: 0 0 0 5px #E8FF5A !important;
+        }
+        @media (prefers-contrast: more) {
+          /* WCAG fix: 1.4.6 AAA — secondary text override da #767671 (4.57:1) a #595955 (7.04:1) */
+          .mobile-proto-screen [style*="color: #767671"],
+          .mobile-proto-screen [style*="color: rgb(118, 118, 113)"] {
+            color: #595955 !important;
+          }
+        }
         @keyframes slideIn { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }
       `,
       }),
