@@ -12772,8 +12772,8 @@ function ad({
       position: "relative",
       width: "100%",
       aspectRatio: "auto",
-      height: "calc(100svh - 248px)",
-      minHeight: 540,
+      height: "100%",
+      minHeight: 0,
       borderRadius: "32px",
       overflow: "hidden",
       backgroundColor: "#0A0A0A",
@@ -14147,7 +14147,13 @@ function ed({ t: a }) {
           })
         : Ne
           ? i.jsx("div", {
-              style: { flex: 1, minHeight: 0, marginBottom: 0 },
+              style: {
+                flex: 1,
+                minHeight: 0,
+                marginBottom: 0,
+                display: "flex",
+                flexDirection: "column",
+              },
               children: i.jsx(ad, {
                 videoUrl: F.videoUrl || "",
                 conceptNumber: u + 1,
