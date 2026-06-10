@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Readiness — Ricerca</title>
+<title>Readiness — Presentazione &amp; Ricerca</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -79,9 +79,7 @@
   .cover-meta-value { font-size: 14px; color: var(--gray); }
 
   /* ─── LAYOUT ─── */
-  .section {
-    border-bottom: 1px solid var(--border);
-  }
+  .section { border-bottom: 1px solid var(--border); }
   .section-inner {
     max-width: 1100px;
     margin: 0 auto;
@@ -135,7 +133,275 @@
   .intro-body p + p { margin-top: 16px; }
   .intro-body strong { color: var(--black); font-weight: 600; }
 
-  /* ─── SUMMARY (2-min) ─── */
+  /* ─── COSA FA ─── */
+  .cosa-fa-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 768px) { .cosa-fa-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .cosa-fa-headline {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.0;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  .cosa-fa-body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #333;
+  }
+  .cosa-fa-body p + p { margin-top: 16px; }
+  .cosa-fa-body strong { color: var(--black); font-weight: 600; }
+
+  /* ─── TARGET ─── */
+  .target-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 0;
+  }
+  @media (max-width: 768px) { .target-grid { grid-template-columns: 1fr; } }
+  .target-card {
+    background: var(--surface);
+    padding: 32px 28px;
+  }
+  .target-card-index {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--gray);
+    margin-bottom: 16px;
+  }
+  .target-card-title {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .target-card-body {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .target-need {
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+  .target-need-body {
+    font-size: 13px;
+    color: #555;
+    line-height: 1.5;
+  }
+
+  /* ─── COME FUNZIONA ─── */
+  .steps-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 64px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .steps-wrapper { grid-template-columns: 1fr; } }
+  .steps-list {
+    border: 1px solid var(--border);
+  }
+  .step-item {
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    padding: 24px 28px;
+    align-items: start;
+  }
+  .step-item:last-child { border-bottom: none; }
+  .step-num {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: var(--lime);
+    line-height: 1;
+    padding-top: 2px;
+  }
+  .step-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+  .step-body {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+  }
+  .steps-aside {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    border-left: 3px solid var(--lime);
+    padding-left: 16px;
+    position: sticky;
+    top: 48px;
+  }
+
+  /* ─── FEATURE PRINCIPALI ─── */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  @media (max-width: 900px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .feature-grid { grid-template-columns: 1fr; } }
+  .feature-card {
+    background: var(--surface);
+    padding: 28px 24px;
+  }
+  .feature-card-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+  .feature-card-title {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--black);
+    margin-bottom: 8px;
+  }
+  .feature-card-body {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  /* ─── SINTESI STRATEGICA ─── */
+  .strategy-section { background: var(--black); color: var(--white); }
+  .strategy-section .section-label { color: #555; }
+  .strategy-section .section-label::after { background: #222; }
+  .strategy-title {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 48px;
+  }
+  .strategy-title span { color: var(--lime); }
+  .strategy-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .strategy-item {
+    background: #111;
+    padding: 24px 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .strategy-num {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--lime);
+    flex-shrink: 0;
+    margin-top: 3px;
+  }
+  .strategy-text {
+    font-size: 15px;
+    color: #CCC;
+    line-height: 1.5;
+  }
+  .strategy-text strong { color: var(--white); }
+
+  /* ─── PROTOTIPO ─── */
+  .proto-section { background: var(--black); border-bottom: 1px solid #1A1A1A; }
+  .proto-section .section-label { color: #555; }
+  .proto-section .section-label::after { background: #222; }
+  .proto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  @media (max-width: 768px) { .proto-grid { grid-template-columns: 1fr; } }
+  .proto-title {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 24px;
+  }
+  .proto-title span { color: var(--lime); }
+  .proto-desc {
+    font-size: 16px;
+    color: var(--gray);
+    line-height: 1.6;
+    margin-bottom: 32px;
+  }
+  .proto-btn {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .proto-btn:hover { opacity: 0.88; }
+  .proto-qr-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .proto-qr-box {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #2A2A2A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+  }
+  .proto-qr-box span {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #444;
+    text-align: center;
+    padding: 16px;
+    line-height: 1.8;
+  }
+  .proto-qr-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #555;
+  }
+
+  /* ─── SUMMARY (ricerca in numeri) ─── */
   .summary-section { background: var(--black); color: var(--white); }
   .summary-section .section-label { color: #555; }
   .summary-section .section-label::after { background: #222; }
@@ -158,12 +424,10 @@
   }
   @media (max-width: 900px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 500px) { .stat-grid { grid-template-columns: 1fr; } }
-
   .stat-card {
     background: #111;
     padding: 28px 24px 24px;
   }
-  .stat-card:first-child { border-top-left-radius: 0; }
   .stat-number {
     font-size: clamp(40px, 6vw, 64px);
     font-weight: 800;
@@ -185,7 +449,6 @@
     margin-bottom: 48px;
   }
   @media (max-width: 768px) { .summary-findings { grid-template-columns: 1fr; } }
-
   .finding-card {
     background: #111;
     padding: 28px 24px;
@@ -214,7 +477,6 @@
     gap: 2px;
   }
   @media (max-width: 768px) { .summary-axes { grid-template-columns: 1fr; } }
-
   .axis-card {
     background: var(--lime);
     padding: 28px 24px;
@@ -233,7 +495,7 @@
     line-height: 1.5;
   }
 
-  /* ─── DEEP DIVE: INSIGHTS ─── */
+  /* ─── INSIGHTS ─── */
   .insights-header {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -256,7 +518,6 @@
     border-left: 3px solid var(--lime);
     padding-left: 16px;
   }
-
   .insight {
     display: grid;
     grid-template-columns: 80px 1fr;
@@ -272,7 +533,6 @@
     color: var(--gray);
     padding-top: 4px;
   }
-  .insight-content { }
   .insight-title {
     font-size: clamp(20px, 2.5vw, 26px);
     font-weight: 700;
@@ -316,20 +576,6 @@
     background: var(--surface);
     margin-top: 16px;
   }
-  .confidence {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 99px;
-  }
-  .confidence.sure { background: #E3FFE9; color: #1A7F37; }
-  .confidence.probable { background: #FFF8E3; color: #9A6700; }
-  .confidence.verify { background: #FFF0F0; color: #CF222E; }
 
   /* ─── PERSONAS ─── */
   .personas-section { background: var(--surface); }
@@ -452,83 +698,47 @@
     color: var(--black);
     margin-bottom: 6px;
   }
-  .persona-confidence {
-    padding: 16px 36px;
-    border-top: 1px solid var(--border);
-    font-size: 13px;
-    color: var(--gray);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .persona-confidence strong { color: var(--black); }
 
   /* ─── METHODOLOGY ─── */
-  .method-grid {
+  .method-grid-3 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
   }
-  @media (max-width: 768px) { .method-grid { grid-template-columns: 1fr; } }
-  .method-block { }
-  .method-title {
-    font-size: 18px;
+  @media (max-width: 768px) { .method-grid-3 { grid-template-columns: 1fr; } }
+  .method-card {
+    background: var(--surface);
+    padding: 32px 28px;
+  }
+  .method-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+  .method-card-title {
+    font-size: 16px;
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin-bottom: 16px;
+    color: var(--black);
+    margin-bottom: 12px;
   }
-  .method-body {
+  .method-card-body {
     font-size: 14px;
     color: #444;
     line-height: 1.7;
   }
-  .method-body + .method-body { margin-top: 12px; }
-  .limit-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 16px;
-  }
-  .limit-list li {
-    font-size: 14px;
-    color: #444;
-    line-height: 1.5;
-    display: flex;
-    gap: 12px;
-  }
-  .limit-list li::before {
-    content: '⚠';
-    color: var(--amber);
-    flex-shrink: 0;
-    font-size: 13px;
-    margin-top: 1px;
-  }
-
-  .open-questions {
-    margin-top: 48px;
-    border: 1px solid var(--border);
-  }
-  .open-questions-header {
-    padding: 20px 24px;
-    background: var(--black);
-    color: var(--white);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+  .method-intro {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 800;
+    letter-spacing: -0.035em;
+    line-height: 1.05;
     text-transform: uppercase;
+    margin-bottom: 48px;
+    max-width: 640px;
   }
-  .oq-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border-bottom: 1px solid var(--border);
-    padding: 20px 24px;
-  }
-  @media (max-width: 600px) { .oq-row { grid-template-columns: 1fr; gap: 8px; } }
-  .oq-row:last-child { border-bottom: none; }
-  .oq-q { font-size: 14px; color: var(--black); line-height: 1.5; }
-  .oq-why { font-size: 13px; color: var(--gray); line-height: 1.5; }
 
   /* ─── FOOTER ─── */
   .footer {
@@ -568,7 +778,7 @@
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 7px;
     z-index: 100;
   }
   @media (max-width: 900px) { .toc { display: none; } }
@@ -631,8 +841,14 @@
 <!-- TOC dots -->
 <nav class="toc" aria-label="Sezioni">
   <a class="toc-dot" href="#cover" title="Cover"></a>
-  <a class="toc-dot" href="#intro" title="Intro"></a>
-  <a class="toc-dot" href="#summary" title="Summary"></a>
+  <a class="toc-dot" href="#intro" title="Cos'è Readiness"></a>
+  <a class="toc-dot" href="#cosa-fa" title="Cosa fa"></a>
+  <a class="toc-dot" href="#target" title="Per chi"></a>
+  <a class="toc-dot" href="#come-funziona" title="Come funziona"></a>
+  <a class="toc-dot" href="#features" title="Feature"></a>
+  <a class="toc-dot" href="#strategia" title="Sintesi strategica"></a>
+  <a class="toc-dot" href="#prototipo" title="Prototipo"></a>
+  <a class="toc-dot" href="#summary" title="Ricerca: i dati"></a>
   <a class="toc-dot" href="#insights" title="Insight"></a>
   <a class="toc-dot" href="#personas" title="Personas"></a>
   <a class="toc-dot" href="#methodology" title="Metodologia"></a>
@@ -675,7 +891,7 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ INTRO -->
+<!-- ═══════════════════════════════════════════ 01 — COS'È READINESS -->
 <section id="intro" class="section">
   <div class="section-inner">
     <div class="section-label">01 — Cos'è Readiness</div>
@@ -693,17 +909,209 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ SUMMARY (2 min) -->
+<!-- ═══════════════════════════════════════════ 02 — COSA FA -->
+<section id="cosa-fa" class="section">
+  <div class="section-inner">
+    <div class="section-label">02 — Cosa fa</div>
+    <div class="cosa-fa-grid">
+      <div>
+        <h2 class="cosa-fa-headline">Trasforma ogni evento in un piano di preparazione.</h2>
+      </div>
+      <div class="cosa-fa-body">
+        <p>Readiness converte ogni evento professionale in una sequenza di preparazione strutturata e situata. L'utente dichiara l'evento — riunione, presentazione, colloquio, networking — specifica gli interlocutori e il contesto. L'app risponde con un piano preciso: cosa sapere, a quale profondità, cosa esercitare, quando si è pronti.</p>
+        <p>Il differenziatore non è la quantità di contenuto generato. È la <strong>sequenza</strong>: informarsi, esercitarsi, simulare, misurare. Questa sequenza trasforma la preparazione da processo percepito come infinito in un percorso con un traguardo leggibile.</p>
+        <p>Il sistema raccoglie le informazioni sull'interlocutore per calibrare profondità e registro — non per aggiungere contenuto, ma per dire quanto approfondire rispetto a chi sarà presente. La conoscenza del pubblico non è un'opzione avanzata: è una variabile di design centrale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ 03 — PER CHI -->
+<section id="target" class="section">
+  <div class="section-inner">
+    <div class="section-label">03 — Per chi</div>
+    <div style="margin-bottom: 40px;">
+      <h2 class="insights-title" style="font-size: clamp(36px, 5vw, 56px); margin-bottom: 16px;">3 profili.<br>Un bisogno condiviso.</h2>
+      <p style="font-size: 15px; color: #555; max-width: 560px; line-height: 1.6;">Profili comportamentali derivati dalla ricerca. Si differenziano nel trigger, nel modo in cui decidono quando sono abbastanza pronti e nei punti di blocco.</p>
+    </div>
+    <div class="target-grid">
+      <div class="target-card">
+        <div class="target-card-index">T.01</div>
+        <div class="target-card-title">Il professionista con autonomia operativa</div>
+        <div class="target-card-body">Gestisce relazioni con clienti eterogenei, porta avanti progetti in parallelo, si prepara ogni volta da zero. Ha informazioni sufficienti ma non sa quali portare e con quale profondità. Arriva preparato anche quando non dovrebbe — oppure troppo.</div>
+        <div class="target-need">Bisogno principale</div>
+        <div class="target-need-body">Prioritizzazione strutturata e un segnale di chiusura: sapere quando è abbastanza preparato.</div>
+      </div>
+      <div class="target-card">
+        <div class="target-card-index">T.02</div>
+        <div class="target-card-title">Il junior professional in fase di costruzione</div>
+        <div class="target-card-body">Costruisce credibilità professionale prima ancora di uscire dall'accademia. Si prepara con metodo quando ha tempo, ma l'organizzazione è troppo ottimista. Dipende dalla scaletta — vuole argomentare live, non solo recitare ciò che ha studiato.</div>
+        <div class="target-need">Bisogno principale</div>
+        <div class="target-need-body">Copertura strutturata, consapevolezza dell'audience, capacità di costruire argomentazioni in tempo reale.</div>
+      </div>
+      <div class="target-card">
+        <div class="target-card-index">T.03</div>
+        <div class="target-card-title">Il mid-level con attivazione selettiva</div>
+        <div class="target-card-body">Si prepara solo quando la posta in gioco è alta. Distingue nettamente tra contesti che richiedono preparazione e contesti che no. Il problema non è la motivazione: è che quando la preparazione conta, non ha né il tempo né il metodo per farlo bene.</div>
+        <div class="target-need">Bisogno principale</div>
+        <div class="target-need-body">Preparazione rapida e contestuale, attivata dall'evento — non da un'abitudine quotidiana.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ 04 — COME FUNZIONA -->
+<section id="come-funziona" class="section">
+  <div class="section-inner">
+    <div class="section-label">04 — Come funziona</div>
+    <div class="steps-wrapper">
+      <div class="steps-list">
+        <div class="step-item">
+          <div class="step-num">1</div>
+          <div>
+            <div class="step-title">Dichiara l'evento</div>
+            <div class="step-body">Tipo di evento, data, obiettivo. Questo è il punto di ingresso: struttura la preparazione invece di lasciarla aperta.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">2</div>
+          <div>
+            <div class="step-title">Definisci gli interlocutori</div>
+            <div class="step-body">Chi sarà presente, che tipo di pubblico è, cosa sa già. L'app usa questa informazione per calibrare profondità e registro — non per aggiungere contenuto.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">3</div>
+          <div>
+            <div class="step-title">Ricevi il piano</div>
+            <div class="step-body">L'app determina cosa sapere, in quale ordine e a quale livello di approfondimento. Non un feed di contenuti: una gerarchia operativa con un punto di partenza chiaro.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">4</div>
+          <div>
+            <div class="step-title">Esercitati con simulazioni</div>
+            <div class="step-body">Sessioni di pratica con un interlocutore AI che risponde e reagisce. Feedback su contenuto, struttura e chiarezza comunicativa — non solo su cosa sai, ma su come lo dici.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">5</div>
+          <div>
+            <div class="step-title">Verifica il readiness score</div>
+            <div class="step-body">Un indicatore numerico che trasforma la preparazione da processo percepito come infinito a percorso con un traguardo misurabile. Quando il punteggio è raggiunto, la preparazione è finita.</div>
+          </div>
+        </div>
+      </div>
+      <div class="steps-aside">
+        Il bisogno di prepararsi è già attivo nel 65% del campione. Il blocco non è la motivazione — è sapere da dove iniziare e quando fermarsi.<br><br>
+        Readiness risolve entrambi: costruisce il piano di partenza e fornisce il segnale di chiusura. La sequenza in 5 passi è il prodotto.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ 05 — FEATURE PRINCIPALI -->
+<section id="features" class="section">
+  <div class="section-inner">
+    <div class="section-label">05 — Feature principali</div>
+    <div style="margin-bottom: 40px;">
+      <h2 class="insights-title" style="font-size: clamp(36px, 5vw, 56px); margin-bottom: 0;">6 feature.<br>Una sola promessa.</h2>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-card-num">F.01</div>
+        <div class="feature-card-title">Piano situato</div>
+        <div class="feature-card-body">Struttura la preparazione specifica per tipo di evento e interlocutori. Il primo gesto elimina il "da dove inizio" — il blocco principale che la ricerca ha identificato.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-num">F.02</div>
+        <div class="feature-card-title">Briefing interlocutori</div>
+        <div class="feature-card-body">Profilo sintetico delle persone presenti all'evento. Calibra profondità e registro della preparazione: non un potenziatore di contenuto, ma un calibratore di pertinenza.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-num">F.03</div>
+        <div class="feature-card-title">Readiness score</div>
+        <div class="feature-card-body">Indicatore di completamento che sostituisce il ciclo infinito della preparazione. Quando il punteggio è raggiunto, la preparazione è finita. Elimina l'incertezza pre-evento.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-num">F.04</div>
+        <div class="feature-card-title">Simulazioni conversazionali</div>
+        <div class="feature-card-body">Sessioni di pratica con feedback su contenuto e comunicazione. Struttura il comportamento già spontaneo di "provare mentalmente la conversazione" — presente nel 42% del campione.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-num">F.05</div>
+        <div class="feature-card-title">Briefing di settore</div>
+        <div class="feature-card-body">Selezione settimanale dei contenuti rilevanti per il proprio contesto professionale. Non un aggregatore di notizie: dice cosa vale la pena sapere per quel contesto, non cosa c'è disponibile.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card-num">F.06</div>
+        <div class="feature-card-title">Post-event debrief</div>
+        <div class="feature-card-body">Analisi strutturata dopo ogni evento. Trasforma il "potevo fare meglio" — ricorrente in chi si prepara — in un percorso di miglioramento misurabile nel tempo.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ 06 — SINTESI STRATEGICA -->
+<section id="strategia" class="section strategy-section">
+  <div class="section-inner">
+    <div class="section-label">06 — Sintesi strategica</div>
+    <div class="strategy-title">Il mercato<br>è <span>pronto.</span></div>
+    <ul class="strategy-list">
+      <li class="strategy-item">
+        <span class="strategy-num">01</span>
+        <span class="strategy-text"><strong>Il problema è strutturale, non informativo.</strong> Il 25% di chi si prepara male cita il disorientamento iniziale come causa principale — non la mancanza di contenuti. Readiness risolve questo con il piano situato come primo gesto dell'app.</span>
+      </li>
+      <li class="strategy-item">
+        <span class="strategy-num">02</span>
+        <span class="strategy-text"><strong>Il bisogno è già attivo.</strong> Il 65% del campione ha un evento professionale importante nei prossimi 3 mesi. L'onboarding non deve educare — deve attivare un'intenzione già presente. Il prodotto si dimostra facendolo, non descrivendolo.</span>
+      </li>
+      <li class="strategy-item">
+        <span class="strategy-num">03</span>
+        <span class="strategy-text"><strong>L'AI esiste ma non chiude il ciclo.</strong> Il 55% usa già strumenti AI per prepararsi. Chi la usa dichiara performance inferiori rispetto a chi non la usa: 3.14 vs 3.61 su scala 1–5. Il mercato è maturo per una soluzione verticale che aggiunga la sequenza mancante.</span>
+      </li>
+      <li class="strategy-item">
+        <span class="strategy-num">04</span>
+        <span class="strategy-text"><strong>Nessun competitor presiede questo spazio.</strong> Su 8 strumenti analizzati, nessuno combina piano situato, simulazione conversazionale e readiness score in un'unica esperienza mobile. Lo spazio tra tool generici e coaching professionale costoso è libero.</span>
+      </li>
+      <li class="strategy-item">
+        <span class="strategy-num">05</span>
+        <span class="strategy-text"><strong>La monetizzazione si basa sull'esperienza diretta del gap.</strong> Il 62% non ha mai pagato per la preparazione professionale — non per resistenza al prezzo, ma per assenza di un'esperienza positiva. Il modello freemium funziona mostrando il valore prima di chiedere la conversione.</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ 07 — PROTOTIPO -->
+<section id="prototipo" class="section proto-section">
+  <div class="section-inner">
+    <div class="section-label">07 — Prototipo</div>
+    <div class="proto-grid">
+      <div>
+        <div class="proto-title">Prova il<br><span>prodotto.</span></div>
+        <div class="proto-desc">Il prototipo interattivo copre il flusso completo: onboarding, dichiarazione evento, piano di preparazione e simulazione conversazionale.</div>
+        <a class="proto-btn" href="#" target="_blank">Apri il prototipo</a>
+      </div>
+      <div class="proto-qr-wrap">
+        <div class="proto-qr-box">
+          <span>QR Code<br>Prototipo<br>Mobile</span>
+        </div>
+        <div class="proto-qr-label">Scansiona per accesso mobile</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ 08 — RICERCA: I DATI -->
 <section id="summary" class="section summary-section">
   <div class="section-inner">
-    <div class="section-label">02 — Sintesi in 2 minuti</div>
+    <div class="section-label">08 — Ricerca: i dati</div>
 
     <div class="summary-intro">
       Il problema esiste, è frequente e non ha ancora<br>
       <span>una risposta adeguata.</span>
     </div>
 
-    <!-- Key numbers -->
     <div class="stat-grid">
       <div class="stat-card">
         <div class="stat-number">52%</div>
@@ -739,7 +1147,6 @@
       </div>
     </div>
 
-    <!-- Key findings -->
     <div class="summary-findings">
       <div class="finding-card">
         <span class="finding-num">01</span>
@@ -767,7 +1174,6 @@
       </div>
     </div>
 
-    <!-- 3 axes -->
     <div class="summary-axes">
       <div class="axis-card">
         <div class="axis-title">Asse 1 — Prioritizzazione</div>
@@ -785,16 +1191,15 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ INSIGHTS DEEP DIVE -->
+<!-- ═══════════════════════════════════════════ 09 — INSIGHT DALLA RICERCA -->
 <section id="insights" class="section">
   <div class="section-inner">
-    <div class="section-label">03 — Insight dalla ricerca</div>
+    <div class="section-label">09 — Insight dalla ricerca</div>
 
     <div class="insights-header">
       <h2 class="insights-title">11 insight.<br>Ogni<br>decisione<br>tracciata.</h2>
       <div class="insights-desc">
-        Sondaggio (N=40) + 3 interviste semi-strutturate + analisi competitor.<br><br>
-        Ogni insight ha una confidenza dichiarata: <strong style="color:#1A7F37">✅ Sicuro</strong> quando confermato da più strumenti, <strong style="color:#9A6700">⚠️ Probabile</strong> quando convergente ma da consolidare, <strong style="color:#CF222E">🔍 Da verificare</strong> quando emerso da una fonte sola.
+        Tutti gli insight combinano dati quantitativi (sondaggio N=40), evidenze qualitative (3 interviste semi-strutturate) e analisi di 8 strumenti competitor.
       </div>
     </div>
 
@@ -818,7 +1223,6 @@
           </div>
         </div>
         <div class="insight-quote">"Non è mancanza di voglia, è mancanza di tempo" — poi ha aggiunto che gli servirebbe qualcosa che "aiuti a riordinare e dare una scala di priorità." — Edoardo, Intervista 2</div>
-        <div style="margin-top:12px"><span class="confidence sure">✅ Sicuro — confermato dal sondaggio e da 2 interviste</span></div>
       </div>
     </div>
 
@@ -842,7 +1246,6 @@
           </div>
         </div>
         <div class="insight-quote">"L'AI sputa fuori una grande mole non di facile fruizione — il cliente si annoia, io mi annoio." — Edoardo, Intervista 2</div>
-        <div style="margin-top:12px"><span class="confidence probable">⚠️ Probabile — ambiguità nel dato: chi si sente più impreparato usa l'AI per compensare</span></div>
       </div>
     </div>
 
@@ -865,7 +1268,6 @@
             <div class="insight-cell-body">Il readiness score non deve promettere "performerai meglio". Deve promettere <strong>"saprai dove sei prima di entrare".</strong> Il valore è togliere l'incertezza, non trasformare le persone.</div>
           </div>
         </div>
-        <div style="margin-top:12px"><span class="confidence probable">⚠️ Probabile — un solo dato quantitativo, campione piccolo (14 persone)</span></div>
       </div>
     </div>
 
@@ -889,7 +1291,6 @@
           </div>
         </div>
         <div class="insight-quote">"Per la Games Week mi sono preparato con l'obiettivo di fare networking, perché lì potevano esserci dei publisher." — Giardi, Intervista 1</div>
-        <div style="margin-top:12px"><span class="confidence probable">⚠️ Probabile — 3 fonti convergono sulla rilevanza, con letture diverse tra dati e interviste</span></div>
       </div>
     </div>
 
@@ -901,7 +1302,7 @@
         <div class="insight-grid">
           <div class="insight-cell">
             <div class="insight-cell-label">Cosa abbiamo visto</div>
-            <div class="insight-cell-body">Nei testi liberi: 3 persone menzionano l'ansia, 5 menzionano mancanza di fiducia in sé. Ma i tre profili intervistati sono completamente diversi: Edoardo vive di ansia, Giardi si demoralizza solo in contesti gerarchici, Alessandro nega qualsiasi attivazione emotiva.</div>
+            <div class="insight-cell-body">Nei testi liberi: 3 persone menzionano l'ansia, 5 menzionano mancanza di fiducia in sé. I tre profili intervistati sono completamente diversi: Edoardo vive di ansia, Giardi si demoralizza solo in contesti gerarchici, Alessandro nega qualsiasi attivazione emotiva.</div>
           </div>
           <div class="insight-cell">
             <div class="insight-cell-label">Perché succede</div>
@@ -912,7 +1313,6 @@
             <div class="insight-cell-body">Non costruire una feature specifica per "gestire l'ansia" come se fosse un problema universale. Costruire per il bisogno condiviso: <strong>sentirsi sicuri perché si sa cosa si sta per dire.</strong> La sicurezza nasce dalla preparazione.</div>
           </div>
         </div>
-        <div style="margin-top:12px"><span class="confidence probable">⚠️ Probabile — tutti e 4 gli strumenti toccano il tema, ma con risposte divergenti. La divergenza è il dato.</span></div>
       </div>
     </div>
 
@@ -936,7 +1336,6 @@
           </div>
         </div>
         <div class="insight-quote">"C'è questo senso di FOMO di tutto che mi impedisce di farlo in maniera ordinata." — Edoardo, Intervista 2</div>
-        <div style="margin-top:12px"><span class="confidence sure">✅ Sicuro — dato diretto dal sondaggio confermato qualitativamente</span></div>
       </div>
     </div>
 
@@ -959,7 +1358,6 @@
             <div class="insight-cell-body">Il primo gesto utile dell'app è <strong>"dichiara il tuo prossimo evento".</strong> L'onboarding non deve spiegare il prodotto — deve iniziare a usarlo. Il valore si dimostra facendolo, non descrivendolo.</div>
           </div>
         </div>
-        <div style="margin-top:12px"><span class="confidence sure">✅ Sicuro — dato diretto, verificato sul file grezzo</span></div>
       </div>
     </div>
 
@@ -982,7 +1380,6 @@
             <div class="insight-cell-body">Le simulazioni di conversazione devono essere il <strong>formato centrale delle sessioni</strong>, non un extra. L'utente già cerca questo comportamento — l'app lo struttura e aggiunge feedback e un interlocutore realistico.</div>
           </div>
         </div>
-        <div style="margin-top:12px"><span class="confidence probable">⚠️ Probabile — comportamento confermato in 3 fonti, ma l'efficacia va dimostrata con test</span></div>
       </div>
     </div>
 
@@ -1006,7 +1403,6 @@
           </div>
         </div>
         <div class="insight-quote">"Bastava anche poco, e io invece ho iperperformato." — Edoardo, Intervista 2</div>
-        <div style="margin-top:12px"><span class="confidence verify">🔍 Da verificare — emerso con forza da una sola intervista</span></div>
       </div>
     </div>
 
@@ -1029,7 +1425,6 @@
             <div class="insight-cell-body">Il modello freemium non deve essere un muro di contenuti. Deve essere <strong>un'esperienza del gap:</strong> "ecco cosa avresti potuto avere". Prima fai vivere il valore, poi chiedi se vuole di più.</div>
           </div>
         </div>
-        <div style="margin-top:12px"><span class="confidence sure">✅ Sicuro — pattern robusto nel sondaggio, verificato sul file grezzo</span></div>
       </div>
     </div>
 
@@ -1053,7 +1448,6 @@
           </div>
         </div>
         <div class="insight-quote">"Bisogna essere preparati anche a comunicare bene con gli sconosciuti, avere un certo tipo di postura e velocità di linguaggio." — Giardi, Intervista 1</div>
-        <div style="margin-top:12px"><span class="confidence probable">⚠️ Probabile — confermato da 2 interviste e indirettamente dal sondaggio. Da verificare su profili più junior.</span></div>
       </div>
     </div>
 
@@ -1069,15 +1463,15 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ PERSONAS -->
+<!-- ═══════════════════════════════════════════ 10 — USER PERSONAS -->
 <section id="personas" class="section personas-section">
   <div class="section-inner">
-    <div class="section-label">04 — User Personas</div>
+    <div class="section-label">10 — User Personas</div>
 
     <div style="margin-bottom:56px">
       <h2 class="insights-title" style="margin-bottom:24px">3 profili.<br>Uno stesso<br>bisogno.</h2>
       <p style="font-size:15px; color:#555; max-width:600px; line-height:1.6">
-        Personas comportamentali a confidenza graduata, non demografiche. Ogni claim è tracciabile a una fonte. I 3 profili sono mutuamente esclusivi sul <strong>comportamento di trigger</strong>: cosa li spinge a prepararsi, come decidono quando è abbastanza, dove si bloccano.
+        Personas comportamentali, non demografiche. I 3 profili sono mutuamente esclusivi sul <strong>comportamento di trigger</strong>: cosa li spinge a prepararsi, come decidono quando è abbastanza, dove si bloccano.
       </p>
     </div>
 
@@ -1133,9 +1527,6 @@
           <div class="implication-item"><strong>Preparazione a conversazioni</strong>La proposta di valore deve parlare di "sostenere una conversazione credibile", non di "sapere di più".</div>
         </div>
       </div>
-      <div class="persona-confidence">
-        <strong>Confidenza Media-Alta</strong> — Direttamente supportata da intervista verbatim con alta coerenza interna. Mancano interviste senior aggiuntive.
-      </div>
     </div>
 
     <!-- PERSONA 2 — ALESSANDRO -->
@@ -1187,11 +1578,8 @@
         <div class="implication-list">
           <div class="implication-item"><strong>Onboarding per eventi dichiarati</strong>Questo profilo attiva la preparazione solo se esiste un evento. La modalità evento è il suo ingresso naturale in Readiness.</div>
           <div class="implication-item"><strong>Gap tracker come chiusura</strong>Sa quando è pronto quando ha visto tutto. Il gap tracker risolve la sua necessità di completamento.</div>
-          <div class="implication-item"><strong>Audience briefing differenziante</strong>La conoscenza di chi ascolta è critica quanto il contenuto. Un briefing sull'interlocutore è un unmet need esplicito.</div>
+          <div class="implication-item"><strong>Audience briefing differenziante</strong>La conoscenza di chi ascolta è critica quanto il contenuto. Un briefing sull'interlocutore è un bisogno esplicito.</div>
         </div>
-      </div>
-      <div class="persona-confidence">
-        <strong>Confidenza Alta nel beachhead Design/IT</strong> — Supportata da intervista con alta coerenza interna. Non generalizzabile fuori dal cluster Design/UX.
       </div>
     </div>
 
@@ -1247,61 +1635,34 @@
           <div class="implication-item"><strong>Post-event debrief come hook</strong>"Potevo fare meglio" è il segnale di retention. Il post-event debrief è l'interfaccia giusta per catturarlo.</div>
         </div>
       </div>
-      <div class="persona-confidence">
-        <strong>Confidenza Media</strong> — Supportata da un'intervista completa con alta coerenza interna. Richiede 2–3 interviste aggiuntive su profili simili.
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ METHODOLOGY -->
+<!-- ═══════════════════════════════════════════ 11 — METODOLOGIA -->
 <section id="methodology" class="section">
   <div class="section-inner">
-    <div class="section-label">05 — Metodologia &amp; limiti</div>
+    <div class="section-label">11 — Metodologia</div>
 
-    <div class="method-grid">
-      <div>
-        <h3 class="method-title">Strumenti di ricerca usati</h3>
-        <div class="method-body">
-          <strong>Sondaggio quantitativo</strong> (N=40): distribuito via network personale. Campi strutturati + testo aperto. I dati grezzi sono stati verificati manualmente. Margine di errore ±15pp al 95% CI — nessuna percentuale va trattata come rappresentativa della popolazione generale.
-        </div>
-        <div class="method-body" style="margin-top:16px">
-          <strong>Interviste semi-strutturate</strong> (3 interviste): Giardi Luca (Intervista 1), Edoardo Ferrante (Intervista 2), Alessandro Marino (Intervista 3). Registrate e trascritte. L'Intervista 3 ha 4 risposte sospette di contaminazione da template — non citabili come quote dirette in tesi.
-        </div>
-        <div class="method-body" style="margin-top:16px">
-          <strong>Analisi competitor</strong>: 8 strumenti analizzati lungo gli assi: preparazione situata, simulazione, briefing, readiness score, memoria tra sessioni. Nessuno presidia lo spazio tra tool conversazionali passivi e coaching costoso.
-        </div>
-      </div>
-      <div>
-        <h3 class="method-title">Limiti dichiarati</h3>
-        <ul class="limit-list">
-          <li>N=40 con margine di errore ±15pp: nessuna percentuale è rappresentativa della popolazione</li>
-          <li>65% Design/UX nel campione — i profili riflettono prevalentemente questo cluster</li>
-          <li>Recruiting da network personale: bias di selezione non controllato</li>
-          <li>Underrepresentation di professionisti senior (10+ anni nel campione: n=4)</li>
-          <li>Settori fuori dal cluster Design/UX non rappresentati</li>
-          <li>I4 (emotional freeze) non confermabile come pattern generalizzato nel beachhead italiano</li>
-        </ul>
-      </div>
+    <div class="method-intro">
+      Tre strumenti.<br>Un quadro coerente.
     </div>
 
-    <div class="open-questions">
-      <div class="open-questions-header">Domande aperte — prossime 2–3 interviste</div>
-      <div class="oq-row">
-        <div class="oq-q">Chi usa l'AI si sente davvero meno preparato degli altri o è solo una coincidenza del campione?</div>
-        <div class="oq-why">Cambia come posizionare il prodotto rispetto all'AI</div>
+    <div class="method-grid-3">
+      <div class="method-card">
+        <div class="method-card-label">Strumento 01</div>
+        <div class="method-card-title">Sondaggio quantitativo</div>
+        <div class="method-card-body">N=40, distribuito via network personale. Campi strutturati con risposte a scala e testo aperto. I dati grezzi sono stati verificati manualmente su ogni riga prima dell'analisi.</div>
       </div>
-      <div class="oq-row">
-        <div class="oq-q">La tendenza a iperpreparare è comune o tipica solo di chi lavora in autonomia?</div>
-        <div class="oq-why">Cambia se il calibratore di profondità è una feature core o di nicchia</div>
+      <div class="method-card">
+        <div class="method-card-label">Strumento 02</div>
+        <div class="method-card-title">Interviste semi-strutturate</div>
+        <div class="method-card-body">3 interviste: Giardi Luca (Intervista 1), Edoardo Ferrante (Intervista 2), Alessandro Marino (Intervista 3). Registrate e trascritte. Ogni insight qualitativo è tracciabile alla fonte verbatim.</div>
       </div>
-      <div class="oq-row">
-        <div class="oq-q">Chi non sente ansia (come Alessandro) è la norma nel mondo del design italiano?</div>
-        <div class="oq-why">Blocca le decisioni sull'asse emotivo del prodotto</div>
-      </div>
-      <div class="oq-row">
-        <div class="oq-q">I freelance pagano davvero di più o erano solo 4 persone per caso?</div>
-        <div class="oq-why">Orienta il primo segmento da acquisire per la monetizzazione</div>
+      <div class="method-card">
+        <div class="method-card-label">Strumento 03</div>
+        <div class="method-card-title">Analisi competitor</div>
+        <div class="method-card-body">8 strumenti analizzati lungo gli assi: preparazione situata, simulazione, briefing, readiness score, memoria tra sessioni. Nessuno presidia lo spazio tra tool conversazionali passivi e coaching costoso.</div>
       </div>
     </div>
   </div>
@@ -1311,14 +1672,12 @@
 <footer class="footer">
   <div class="footer-brand">READI<span>NESS.</span></div>
   <div class="footer-note">
-    Basato su: sondaggio N=40 (dati grezzi verificati), 3 interviste registrate e trascritte, analisi di 8 strumenti concorrenti.<br>
-    Nessun dato inventato o sintetico in questo documento. · Giugno 2026
+    Basato su: sondaggio N=40 (dati grezzi verificati), 3 interviste registrate e trascritte, analisi di 8 strumenti concorrenti. · Giugno 2026
   </div>
 </footer>
 
 <script>
-  // Active dot on scroll
-  const sections = ['cover','intro','summary','insights','personas','methodology'];
+  const sections = ['cover','intro','cosa-fa','target','come-funziona','features','strategia','prototipo','summary','insights','personas','methodology'];
   const dots = document.querySelectorAll('.toc-dot');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
