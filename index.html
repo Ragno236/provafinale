@@ -11798,10 +11798,10 @@ function Of() {
     ],
     u = d.flatMap((h) => h.days);
   return i.jsxs("div", {
-    style: { flex: 1, display: "flex", flexDirection: "column" },
+    style: { flex: 1, display: "flex", flexDirection: "column", minHeight: 0 },
     children: [
       i.jsxs("div", {
-        style: { flex: 1, overflowY: "auto", padding: "0 20px" },
+        style: { flex: 1, overflowY: "auto", minHeight: 0, padding: "0 20px" },
         children: [
           i.jsxs("div", {
             style: {
@@ -14171,6 +14171,7 @@ function ed({ t: a }) {
                 flex: 1,
                 minHeight: 0,
                 marginBottom: 0,
+                paddingBottom: 16,
                 display: "flex",
                 flexDirection: "column",
               },
@@ -16810,31 +16811,6 @@ function ProfileScreen() {
                 () => setLanguage((v) => (v === "Italiano" ? "English" : "Italiano")),
               ),
               row("Account", "simone@email.it", () => {}),
-            ],
-          }),
-          i.jsxs("div", {
-            style: {
-              backgroundColor: pt,
-              border: `1px solid ${Q}`,
-              borderRadius: 16,
-              padding: 16,
-              marginBottom: 16,
-            },
-            children: [
-              i.jsx("div", {
-                style: {
-                  fontSize: 10,
-                  color: b,
-                  letterSpacing: "0.12em",
-                  textTransform: "uppercase",
-                  marginBottom: 8,
-                },
-                children: "Preferenze sessione",
-              }),
-              i.jsx("div", {
-                style: { fontSize: 13, color: g, lineHeight: 1.5 },
-                children: "Formato consigliato: video pill con sottotitoli. Promemoria giornaliero: 18:30.",
-              }),
             ],
           }),
           i.jsx("button", {
