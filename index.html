@@ -9304,7 +9304,7 @@ function kf({ badge: a }) {
             width: 9,
             height: 9,
             borderRadius: "50%",
-            backgroundColor: g,
+            backgroundColor: ae,
             border: `1.5px solid ${rd}`,
           },
         }),
@@ -9731,6 +9731,7 @@ function Rf() {
   const a = _e(),
     d = 42,
     u = 12,
+    currentDay = 1,
     [h, v] = Z.useState(!1);
   return i.jsxs(i.Fragment, {
     children: [
@@ -9773,7 +9774,7 @@ function Rf() {
                   textTransform: "uppercase",
                   marginTop: 6,
                 },
-                children: ["READI", i.jsx("br", {}), "NESS."],
+                children: ["READI", i.jsx("br", {}), "NESS", i.jsx("span", { style: { color: ae }, children: "." })],
               }),
             ],
           }),
@@ -9846,32 +9847,6 @@ function Rf() {
                           u,
                           " giorni · Mer 17 giu",
                         ],
-                      }),
-                    ],
-                  }),
-                ],
-              }),
-              i.jsxs("div", {
-                style: {
-                  marginTop: 18,
-                  paddingTop: 14,
-                  borderTop: "1px solid rgba(255,255,255,0.12)",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                },
-                children: [
-                  i.jsxs("div", {
-                    style: {
-                      fontSize: 11,
-                      color: "rgba(255,255,255,0.55)",
-                      lineHeight: 1.5,
-                    },
-                    children: [
-                      "Punto critico: ",
-                      i.jsx("span", {
-                        style: { color: N },
-                        children: "basi di AI generativa",
                       }),
                     ],
                   }),
@@ -10118,7 +10093,7 @@ function Rf() {
                 }),
             ],
           }),
-          i.jsxs("div", {
+          currentDay >= 3 && i.jsxs("div", {
             style: {
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
@@ -10257,7 +10232,7 @@ function Rf() {
               }),
             ],
           }),
-          i.jsx("div", {
+          currentDay >= 3 && i.jsx("div", {
             style: { margin: "10px 16px 0" },
             children: i.jsx($i, {
               label: "Dove sei forte / debole",
@@ -10561,7 +10536,6 @@ function Ff() {
     total: 4,
     eyebrow: "Domanda 1 / 4",
     question: "Perché sei qui?",
-    selected: 1,
     options: [
       {
         label: "Devo affrontare un evento specifico",
@@ -10572,7 +10546,7 @@ function Ff() {
         sub: "Networking, meeting, riunioni ricorrenti",
       },
       {
-        label: "Mi blocco quando devo parlare in pubblico",
+        label: "Ho difficoltà ad esporre",
         sub: "Cerco un metodo per non andare nel panico",
       },
       { label: "Curioso, sto esplorando" },
@@ -10585,10 +10559,9 @@ function Pf() {
     total: 4,
     eyebrow: "Domanda 2 / 4",
     question: "Quanto tempo al giorno puoi dedicare?",
-    selected: 1,
     options: [
       { label: "5 minuti", sub: "Solo l'essenziale" },
-      { label: "15 minuti", sub: "Consigliato — sessione completa" },
+      { label: "15 minuti", sub: "Preparazione completa" },
       { label: "30 minuti", sub: "Voglio andare a fondo" },
       { label: "Variabile", sub: "Mi adatto giorno per giorno" },
     ],
@@ -10599,8 +10572,7 @@ function _f() {
     step: 3,
     total: 4,
     eyebrow: "Domanda 3 / 4",
-    question: "Cosa ti rallenta di più oggi?",
-    selected: 0,
+    question: "Dove trovi difficoltà?",
     options: [
       {
         label: "Non so da dove iniziare",
@@ -10621,7 +10593,6 @@ function Nf() {
     total: 4,
     eyebrow: "Domanda 4 / 4",
     question: "Con che frequenza hai eventi importanti?",
-    selected: 2,
     ctaLabel: "Crea il mio profilo",
     options: [
       { label: "Quasi ogni settimana" },
@@ -10706,26 +10677,6 @@ function Df() {
             children:
               "Arriva a ogni evento sapendo cosa dire — e sapendo di saperlo.",
           }),
-          i.jsx("div", {
-            style: {
-              marginTop: 28,
-              padding: "16px 18px",
-              backgroundColor: pt,
-              border: `1px solid ${Q}`,
-              borderRadius: 16,
-            },
-            children: i.jsxs("div", {
-              style: { fontSize: 12, color: b, lineHeight: 1.55 },
-              children: [
-                "Un sistema che trasforma quello che impari in ",
-                i.jsx("span", {
-                  style: { color: g, fontWeight: 600 },
-                  children: "prontezza misurabile",
-                }),
-                ", giorno per giorno fino all'evento.",
-              ],
-            }),
-          }),
         ],
       }),
       i.jsxs("div", {
@@ -10797,8 +10748,8 @@ function Lf() {
     d = [
       {
         n: "01",
-        t: "Dichiari il prossimo evento",
-        d: "Data e tipo. Niente argomenti — li capiamo dal contesto.",
+        t: "dimmi la prossima occasione importante",
+        d: "Data e tipologia",
       },
       {
         n: "02",
@@ -10808,7 +10759,7 @@ function Lf() {
       {
         n: "03",
         t: "Arrivi pronto",
-        d: "Un readiness score ti dice dove sei forte e dove sei debole.",
+        d: "Ti aiuterò a capire il tuo cavallo di battaglia e dove puoi migliorare",
       },
     ];
   return i.jsxs("div", {
@@ -11031,7 +10982,7 @@ function Af() {
               letterSpacing: "-0.03em",
               lineHeight: 1.05,
             },
-            children: ["Niente feed.", i.jsx("br", {}), "Gerarchia."],
+            children: ["Diverse fonti,", i.jsx("br", {}), "per diversi momenti"],
           }),
           i.jsx("div", {
             style: {
@@ -11042,7 +10993,7 @@ function Af() {
               maxWidth: 320,
             },
             children:
-              "Non aggregiamo notizie. Selezioniamo cosa, per il tuo evento, vale davvero la pena sapere.",
+              "Seleziono solo ciò che conta per la tua grande occasione",
           }),
           i.jsx("div", {
             style: { marginTop: 26 },
@@ -11064,13 +11015,6 @@ function Af() {
                 label: "Voci di mercato",
                 desc: "Post di addetti ai lavori, casi aziendali pubblicati.",
                 weight: 40,
-              },
-              {
-                tier: "—",
-                label: "Social grezzi",
-                desc: "Esclusi: feed, thread non verificati, hot take.",
-                weight: 0,
-                off: !0,
               },
             ].map((d) =>
               i.jsxs(
@@ -11261,7 +11205,7 @@ function Bf() {
               textTransform: "uppercase",
               marginBottom: 12,
             },
-            children: "Readiness score",
+            children: "Feedback",
           }),
           i.jsxs("div", {
             style: {
@@ -11271,7 +11215,7 @@ function Bf() {
               letterSpacing: "-0.03em",
               lineHeight: 1.05,
             },
-            children: ['Non quanto hai fatto.', i.jsx("br", {}), 'Quanto sei pronto.'],
+            children: ['Possiamo approfondire', i.jsx("br", {}), 'di più, puoi farcela!'],
           }),
           i.jsx("div", {
             style: {
@@ -11281,17 +11225,39 @@ function Bf() {
               marginTop: 12,
               letterSpacing: "-0.01em",
             },
-            children: "Dove sei forte. Dove sei debole. Quanto sei pronto.",
+            children: "Basta crederci",
           }),
           i.jsx("div", {
-            style: { marginTop: 30, display: "flex", justifyContent: "center" },
-            children: i.jsx(ql, { value: 65, size: 150, stroke: 10 }),
+            style: {
+              marginTop: 28,
+              padding: "16px 18px",
+              backgroundColor: "rgba(255,255,255,0.06)",
+              border: "1px solid rgba(255,255,255,0.12)",
+              borderRadius: 16,
+            },
+            children: i.jsx("div", {
+              style: { fontSize: 14, color: N, lineHeight: 1.5, letterSpacing: "-0.01em" },
+              children: "Sai tutto, puoi lavorare meglio sull'apertura di un discorso.",
+            }),
           }),
         ],
       }),
       i.jsxs("div", {
         style: { paddingBottom: 28 },
         children: [
+          i.jsx("div", {
+            style: { fontSize: 12, color: "rgba(255,255,255,0.5)", textAlign: "center", fontStyle: "italic", marginBottom: 16 },
+            children: [
+              "\"Sheldon sarebbe fiero di te.\"",
+              "\"Veloce come la DeLorean di Doc.\"",
+              "\"10 punti a Grifondoro. Continua così.\"",
+              "\"Non cedere al Lato Oscuro. Continua a crederci.\"",
+              "\"Se lo può fare Iron Man in una grotta, puoi farlo anche tu.\"",
+              "\"Non è la bacchetta, è il mago. Credici.\"",
+              "\"Anche Magikarp diventa Gyarados. Credici.\"",
+              "\"Non sei NPC. Smetti di aspettare e gioca da protagonista.\"",
+            ][Math.floor(Math.random() * 8)],
+          }),
           i.jsx("button", {
             onClick: () => (a == null ? void 0 : a.goNext()),
             style: {
@@ -11671,35 +11637,6 @@ function Wf() {
               }),
             ],
           }),
-          i.jsxs("div", {
-            style: {
-              marginTop: 18,
-              padding: "12px 14px",
-              backgroundColor: pt,
-              border: `1px solid ${Q}`,
-              borderRadius: 12,
-              display: "flex",
-              gap: 10,
-              alignItems: "flex-start",
-            },
-            children: [
-              i.jsx("span", {
-                style: {
-                  fontSize: 9,
-                  color: g,
-                  fontWeight: 600,
-                  letterSpacing: "0.12em",
-                  marginTop: 2,
-                },
-                children: "AUTO →",
-              }),
-              i.jsx("span", {
-                style: { fontSize: 12, color: b, lineHeight: 1.5 },
-                children:
-                  "Capiamo da soli gli argomenti dal contesto. Non ti chiediamo di compilarli.",
-              }),
-            ],
-          }),
         ],
       }),
       i.jsxs("div", {
@@ -11838,7 +11775,7 @@ function Of() {
                 style: { fontSize: 11, color: b, letterSpacing: "0.1em" },
                 children: "Piano · 12 giorni",
               }),
-              i.jsx(od, {}),
+              i.jsx("div", { style: { width: 22 } }),
             ],
           }),
           i.jsx("div", {
@@ -11859,7 +11796,7 @@ function Of() {
               lineHeight: 1.15,
               marginTop: 6,
             },
-            children: "Talent Garden, sapendo parlare di AI.",
+            children: "Talk al Talent Garden su AI & lavoro",
           }),
           i.jsxs("div", {
             style: {
@@ -12892,7 +12829,10 @@ function ad({
             children: [
               i.jsx("button", {
                 onClick: (C) => {
-                  (C.stopPropagation(), P && P());
+                  C.stopPropagation();
+                  if (H) {
+                    if (_.current) { _.current.currentTime = 0; _.current.play(); D(!1); }
+                  } else { P && P(); }
                 },
                 style: {
                   flex: 1,
@@ -12908,7 +12848,7 @@ function ad({
                   backdropFilter: "blur(8px)",
                   transition: "all 0.2s",
                 },
-                children: "Salva nota vocale",
+                children: H ? "Ascolta di nuovo" : "Inizia",
               }),
               H &&
                 i.jsx("button", {
@@ -13760,7 +13700,7 @@ function Ju({ t: a }) {
           }),
           i.jsx("div", {
             style: { fontSize: 11, color: b, letterSpacing: "0.1em" },
-            children: "Sessione",
+            children: "Intro",
           }),
           i.jsx("button", {
             onClick: () => {
@@ -13790,7 +13730,7 @@ function Ju({ t: a }) {
               textTransform: "uppercase",
               marginBottom: 8,
             },
-            children: ["Giorno ", a.day, " · T-", a.daysToEvent, "g · 15 min"],
+            children: ["Giorno ", a.day, " · −", a.daysToEvent, " giorni"],
           }),
           i.jsx("div", {
             style: {
@@ -13908,7 +13848,7 @@ function ed({ t: a }) {
     [D, se] = Z.useState(() =>
       parseInt(localStorage.getItem("readiness_video_skips") || "0", 10),
     ),
-    G = ["Definizione netta", "Punto operativo", "Trappola da evitare"],
+    G = ["Definizione netta", "Punto operativo", "Potresti sentir dire"],
     A = [4, 4, 4],
     R = A.reduce((ne, re) => ne + re, 0),
     C = a.briefings || [
@@ -13972,7 +13912,7 @@ function ed({ t: a }) {
           }),
           i.jsxs("div", {
             style: { fontSize: 11, color: b, letterSpacing: "0.1em" },
-            children: ["Briefing · ", u + 1, " di ", C.length],
+            children: u === 0 ? "Iniziamo" : ["Briefing · ", u + 1, " di ", C.length],
           }),
           i.jsx("button", {
             onClick: () => {
@@ -14145,7 +14085,7 @@ function ed({ t: a }) {
                     fontWeight: 500,
                     textAlign: "center",
                   },
-                  children: ["Gioco completato! Punteggio: ", j[u], "%"],
+                  children: "Quasi perfetto",
                 }),
             ],
           })
@@ -16097,7 +16037,7 @@ function qf({ b: a, t: d }) {
           }),
           i.jsx("div", {
             style: { fontSize: 11, color: b, letterSpacing: "0.1em" },
-            children: "Mini-Game",
+            children: "Ci siamo quasi",
           }),
           i.jsx("button", {
             onClick: () => {
