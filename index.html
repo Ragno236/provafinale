@@ -17435,6 +17435,10 @@ function Jf() {
 }
 function ep() {
   return i.jsx("div", {
+    style: {
+      minHeight: "100%",
+      paddingBottom: 80,
+    },
     children: Yl.map((a, d) =>
       i.jsxs(
         "div",
@@ -17497,10 +17501,11 @@ function tp() {
           id: "interactive-prototype",
           style: {
             width: "100%",
-            minHeight: "100vh",
+            height: "100vh",
             backgroundColor: "#F2F1ED",
-            padding: "60px 0 100px",
+            padding: 0,
             fontFamily: "'Helvetica Neue', Helvetica, sans-serif",
+            overflow: "hidden",
           },
           children: [
             i.jsx("style", {
@@ -17525,17 +17530,25 @@ function tp() {
             }),
             i.jsxs("div", {
               className: "readiness-proto",
+              style: {
+                height: "100vh",
+                display: "flex",
+                flexDirection: "column",
+                overflow: "hidden",
+              },
               children: [
                 i.jsxs("div", {
                   style: {
-                    padding: "0 60px 32px",
+                    padding: "60px 60px 32px",
                     maxWidth: 1400,
+                    width: "100%",
                     margin: "0 auto",
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "flex-end",
                     gap: 40,
                     flexWrap: "wrap",
+                    flexShrink: 0,
                   },
                   children: [
                     i.jsxs("div", {
@@ -17569,7 +17582,7 @@ function tp() {
                             lineHeight: 1.6,
                           },
                           children:
-                            "Pianificazione adattiva, audio reali e quiz multimodali del Readiness Score. Naviga le 23 schermate giorno per giorno o esplora il catalogo completo.",
+                            "Pianificazione adattiva, audio reali e quiz multimodali del Readiness Score. Naviga le schermate giorno per giorno o esplora il catalogo completo.",
                         }),
                       ],
                     }),
@@ -17609,7 +17622,16 @@ function tp() {
                     }),
                   ],
                 }),
-                a === "single" ? i.jsx(Zf, {}) : i.jsx(ep, {}),
+                i.jsx("div", {
+                  style: {
+                    flex: 1,
+                    minHeight: 0,
+                    overflowY: "auto",
+                    WebkitOverflowScrolling: "touch",
+                    paddingBottom: 80,
+                  },
+                  children: a === "single" ? i.jsx(Zf, {}) : i.jsx(ep, {}),
+                }),
               ],
             }),
           ],
