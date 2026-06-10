@@ -9926,6 +9926,7 @@ function Rf({ day: dayProp }) {
                     style: {
                       width: 40,
                       height: 40,
+                      flexShrink: 0,
                       borderRadius: "50%",
                       backgroundColor: g,
                       display: "flex",
@@ -12788,6 +12789,8 @@ function ad({
     style: {
       position: "relative",
       width: "100%",
+      maxWidth: "100%",
+      boxSizing: "border-box",
       aspectRatio: "auto",
       height: "100%",
       minHeight: 0,
@@ -16080,7 +16083,7 @@ function Gf({ b: a, step: d, total: u, t: h }) {
         ],
       }),
       i.jsx("div", {
-        style: { padding: "0 20px 16px" },
+        style: { flex: 1, minHeight: 0, display: "flex", flexDirection: "column", padding: "0 20px 16px" },
         children: i.jsx(ad, {
           videoUrl: a.videoUrl || "",
           conceptNumber: d,
