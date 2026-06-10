@@ -9705,7 +9705,7 @@ function sd({ active: a }) {
           );
           v !== -1 && d.goToIndex(v);
         } else if (h === 3) {
-          const v = Se.findIndex((k) => k.label.includes("· Readiness score"));
+          const v = Se.findIndex((k) => k.label.includes("· Feedback"));
           v !== -1 && d.goToIndex(v);
         }
       }
@@ -10688,7 +10688,7 @@ function Df() {
               lineHeight: 0.88,
               textTransform: "uppercase",
             },
-            children: ["READI", i.jsx("br", {}), "NESS."],
+            children: ["READI", i.jsx("br", {}), "NESS", i.jsx("span", { style: { color: ae }, children: "." })],
           }),
           i.jsx("div", {
             style: {
@@ -10700,7 +10700,7 @@ function Df() {
               maxWidth: 320,
             },
             children:
-              "Arriva a ogni evento sapendo cosa dire — e sapendo di saperlo.",
+              "Sapere tutto conta, ma non serve se non sai come dirlo. Ogni momento può diventare un'occasione importante.",
           }),
         ],
       }),
@@ -12769,7 +12769,7 @@ function ad({
       aspectRatio: "auto",
       height: "min(640px, calc(100vh - 210px))",
       minHeight: 540,
-      borderRadius: "20px",
+      borderRadius: "32px",
       overflow: "hidden",
       backgroundColor: "#0A0A0A",
       userSelect: "none",
@@ -12800,7 +12800,7 @@ function ad({
           right: 12,
           zIndex: 5,
           padding: "4px 9px",
-          borderRadius: 6,
+          borderRadius: 12,
           border: "1px solid rgba(255,255,255,0.4)",
           backgroundColor: cc ? "#E8FF5A" : "rgba(0,0,0,0.3)",
           color: cc ? "#0A0A0A" : "#FFFFFF",
@@ -13867,7 +13867,7 @@ function Ju({ t: a }) {
                       : "Quiz finale · sintesi",
               time: "1 min",
             },
-            { n: "03", label: "Aggiornamento readiness score", time: "2 min" },
+            { n: "03", label: "Feedback finale", time: "2 min" },
           ].map((u) =>
             i.jsxs(
               "div",
@@ -14579,7 +14579,7 @@ function td({ t: a }) {
                   marginBottom: 8,
                 },
                 children:
-                  "Una sola domanda che mette insieme le 3 nozioni di oggi.",
+                  "Seleziona la frase che meglio spiega " + a.topicShort + ".",
               }),
               i.jsx("div", {
                 style: {
@@ -14671,8 +14671,8 @@ function td({ t: a }) {
                     },
                     children:
                       P === 1
-                        ? "Corretto. Lo salviamo come consolidato."
-                        : "Non proprio: la risposta B è quella corretta. Te la riproponiamo domani per consolidarla.",
+                        ? "Quasi perfetto. Hai scelto la frase più chiara."
+                        : "Ci sei vicino. La risposta B è più precisa e naturale.",
                   }),
                 i.jsx("button", {
                   onClick: () => (j == null ? void 0 : j.goNext()),
@@ -14691,7 +14691,7 @@ function td({ t: a }) {
                     fontFamily: "inherit",
                     opacity: P !== null ? 1 : 0.5,
                   },
-                  children: "Completa e vedi il punteggio →",
+                  children: "Continua →",
                 }),
               ],
             }),
@@ -15388,23 +15388,25 @@ const Ul = [
         {
           text: "Prevedere ≠ comprendere: l'output può essere fluente e sbagliato.",
           miniGame: {
-            type: "drag-match",
-            pairs: [
+            type: "fill-blank",
+            sentences: [
               {
-                term: "Token",
-                definition: "Unità base di testo elaborata dal modello",
+                before: "Un LLM non capisce come una persona: ",
+                answer: "prevede",
+                after: " la parola più probabile.",
+                options: ["prevede", "ricorda", "decide"],
               },
               {
-                term: "Parametri",
-                definition: "Pesi interni che definiscono la conoscenza",
+                before: "Se il contesto è debole, anche la risposta diventa ",
+                answer: "fragile",
+                after: ".",
+                options: ["fragile", "oggettiva", "definitiva"],
               },
               {
-                term: "Training",
-                definition: "Fase di apprendimento su testi preesistenti",
-              },
-              {
-                term: "Context window",
-                definition: "Limite di memoria della conversazione",
+                before: "Una risposta fluida va sempre ",
+                answer: "verificata",
+                after: ".",
+                options: ["verificata", "memorizzata", "copiata"],
               },
             ],
           },
@@ -16089,7 +16091,7 @@ function qf({ b: a, t: d }) {
       "drag-match": "Abbina Termini",
       sequence: "Ordina Sequenza",
       "true-false": "Vero o Falso",
-      "fill-blank": "Riempi il Vuoto",
+      "fill-blank": "Completa la risposta",
       scramble: "Ricostruisci",
     };
   return i.jsxs("div", {
@@ -16155,7 +16157,7 @@ function qf({ b: a, t: d }) {
               textTransform: "uppercase",
               marginBottom: 4,
             },
-            children: ["Mini-Game · ", v[h.type] || h.type],
+            children: ["Ci siamo quasi · ", v[h.type] || h.type],
           }),
           i.jsx("div", {
             style: {
@@ -16238,12 +16240,12 @@ function Yf() {
                 "drag-match": "Abbina",
                 sequence: "Ordina",
                 "true-false": "V/F",
-                "fill-blank": "Blank",
+                "fill-blank": "Completa la risposta",
                 scramble: "Scramble",
               };
             j.push({
-              label: `${d()} · Mini-Game · ${se[H.miniGame.type] || H.miniGame.type}`,
-              phase: "F08c · Mini-Game",
+              label: `${d()} · ${se[H.miniGame.type] || H.miniGame.type}`,
+              phase: "F08c · Active recall",
               goal: `Active recall interattivo: ${H.miniGame.type === "drag-match" ? "associazione terminologia" : H.miniGame.type === "sequence" ? "riordinamento sequenziale" : H.miniGame.type === "true-false" ? "vero/falso con spiegazione" : H.miniGame.type === "fill-blank" ? "completamento frase" : "ricostruzione definizione"}.`,
               insight:
                 "I08 — Active recall con resistenza: migliora la ritenzione del 40% vs lettura passiva.",
@@ -16258,7 +16260,7 @@ function Yf() {
   u.push({
     day: "Giorno 1",
     title: `Home, piano dei 12 giorni & prima sessione · ${v.topic}`,
-    body: "Il piano si materializza: home, traiettoria dei 12 giorni e prima micro-sessione. Briefing, quiz testuale, aggiornamento del readiness score.",
+    body: "Il piano si materializza: home, traiettoria dei 12 giorni e prima micro-sessione. Briefing, quiz testuale, feedback finale.",
     screens: [
       {
         label: `${d()} · Sessione · intro`,
@@ -16283,7 +16285,7 @@ function Yf() {
         render: () => i.jsx(td, { t: v }),
       },
       {
-        label: `${d()} · Readiness score`,
+        label: `${d()} · Feedback`,
         bg: g,
         phase: "F13 · Feedback",
         goal: "Chiusura del ciclo.",
@@ -16320,7 +16322,7 @@ function Yf() {
     u.push({
       day: `Giorno ${j.day}`,
       title: `${j.topic} · T-${j.daysToEvent}g`,
-      body: `${j.oneLiner} Briefing, costruzione dell'argomento, quiz adattivo, aggiornamento del readiness score.`,
+      body: `${j.oneLiner} Briefing, costruzione dell'argomento, quiz adattivo, feedback finale.`,
       screens: [
         {
           label: `${d()} · Sessione · intro`,
@@ -16356,7 +16358,7 @@ function Yf() {
           render: () => i.jsx(td, { t: j }),
         },
         {
-          label: `${d()} · Readiness score`,
+          label: `${d()} · Feedback`,
           bg: g,
           phase: "F13 · Feedback",
           goal: "Aggiornamento del punteggio con delta e gap residui.",
@@ -16673,7 +16675,7 @@ const Yl = [
         render: () => i.jsx(Af, {}),
       },
       {
-        label: "08 · Readiness score",
+        label: "08 · Feedback",
         bg: g,
         phase: "F04 · Promessa",
         goal: "Mostrare la chiusura del ciclo prima di iniziarlo.",
