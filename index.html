@@ -17307,6 +17307,9 @@ function Jf() {
           will-change: opacity, transform, filter;
           backface-visibility: hidden;
           animation: smartForward 0.28s ease;
+          box-sizing: border-box;
+          padding-bottom: max(34px, env(safe-area-inset-bottom));
+          scroll-padding-bottom: max(96px, calc(env(safe-area-inset-bottom) + 48px));
         }
         .mobile-proto-screen[data-motion="back"] {
           animation-name: smartBack;
@@ -17357,7 +17360,8 @@ function Jf() {
         onTouchEnd: P,
         style: {
           width: "100%",
-          height: "100vh",
+          height: "100dvh",
+          maxHeight: "100dvh",
           backgroundColor: u.bg || "#F9F8F4",
           display: "flex",
           flexDirection: "column",
