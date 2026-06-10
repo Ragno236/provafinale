@@ -10706,15 +10706,17 @@ function Df() {
           }),
           i.jsxs("div", {
             style: {
-              fontSize: 72,
+              fontSize: 50,
               fontWeight: 800,
               color: g,
               letterSpacing: "-0.05em",
-              lineHeight: 0.88,
+              lineHeight: 0.9,
               textTransform: "uppercase",
               textAlign: "center",
+              whiteSpace: "nowrap",
+              animation: "readinessLogoIn 0.7s ease",
             },
-            children: ["READI", i.jsx("br", {}), "NESS", i.jsx("span", { style: { color: ae }, children: "." })],
+            children: ["READINESS", i.jsx("span", { style: { color: ae }, children: "." })],
           }),
           i.jsx("div", {
             style: {
@@ -17342,6 +17344,11 @@ function Jf() {
           0% { opacity: 0; transform: translate3d(0, 6px, 0) scale(0.99); filter: blur(1px); }
           100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
+        @keyframes readinessLogoIn {
+          0% { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.96); filter: blur(2px); }
+          58% { opacity: 1; transform: translate3d(0, -2px, 0) scale(1.015); filter: blur(0); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+        }
       `,
       }),
       i.jsxs("div", {
@@ -17564,6 +17571,11 @@ function tp() {
         }
         @keyframes smartFade {
           0% { opacity: 0; transform: translate3d(0, 8px, 0) scale(0.99); filter: blur(1px); }
+          100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
+        }
+        @keyframes readinessLogoIn {
+          0% { opacity: 0; transform: translate3d(0, 14px, 0) scale(0.96); filter: blur(2px); }
+          58% { opacity: 1; transform: translate3d(0, -2px, 0) scale(1.015); filter: blur(0); }
           100% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); filter: blur(0); }
         }
         
