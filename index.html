@@ -9771,33 +9771,7 @@ function Rf({ day: dayProp }) {
         },
         children: [
           i.jsxs("div", {
-            style: {
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "8px 20px 4px",
-            },
-            children: [
-              i.jsx(od, {}),
-              i.jsx("button", {
-                onClick: () => {
-                  const k = Se.findIndex((j) => j.label.includes("· Profilo"));
-                  k !== -1 && a != null && a.goToIndex && a.goToIndex(k);
-                },
-                style: {
-                  background: "none",
-                  border: "none",
-                  padding: 0,
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                },
-                children: i.jsx(kf, { badge: !0 }),
-              }),
-            ],
-          }),
-          i.jsxs("div", {
-            style: { padding: "16px 20px 4px" },
+            style: { padding: "24px 20px 4px" },
             children: [
               i.jsx("div", {
                 style: {
@@ -17370,73 +17344,6 @@ function Jf() {
           position: "relative",
         },
         children: [
-          i.jsxs("div", {
-            style: {
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "14px 20px 8px",
-              backgroundColor: u.bg || pt,
-              flexShrink: 0,
-              zIndex: 10,
-              borderBottom: "none",
-            },
-            children: [
-              i.jsx("button", {
-                onClick: () => k(-1),
-                disabled: a === 0,
-                style: {
-                  background: "none",
-                  border: "none",
-                  padding: 4,
-                  opacity: a === 0 ? 0.25 : 1,
-                  cursor: a === 0 ? "default" : "pointer",
-                  color: u.bg === g ? N : g,
-                  fontSize: 20,
-                  lineHeight: 1,
-                },
-                children: "←",
-              }),
-              i.jsxs("div", {
-                style: { textAlign: "center" },
-                children: [
-                  i.jsx("div", {
-                    style: {
-                      fontSize: 10,
-                      letterSpacing: "0.12em",
-                      textTransform: "uppercase",
-                      color: u.bg === g ? "rgba(255,255,255,0.5)" : b,
-                    },
-                    children: u.day,
-                  }),
-                  i.jsxs("div", {
-                    style: {
-                      fontSize: 11,
-                      fontWeight: 500,
-                      color: u.bg === g ? N : g,
-                      marginTop: 1,
-                    },
-                    children: [a + 1, " / ", h],
-                  }),
-                ],
-              }),
-              i.jsx("button", {
-                onClick: () => k(1),
-                disabled: a === h - 1,
-                style: {
-                  background: "none",
-                  border: "none",
-                  padding: 4,
-                  opacity: a === h - 1 ? 0.25 : 1,
-                  cursor: a === h - 1 ? "default" : "pointer",
-                  color: u.bg === g ? N : g,
-                  fontSize: 20,
-                  lineHeight: 1,
-                },
-                children: "→",
-              }),
-            ],
-          }),
           i.jsx(
             "div",
             {
