@@ -9474,7 +9474,7 @@ function zf({ active: a }) {
     height: "22",
     viewBox: "0 0 24 24",
     fill: "none",
-    stroke: a ? g : b,
+    stroke: a ? N : "rgba(255,255,255,0.68)",
     strokeWidth: a ? 2 : 1.5,
     strokeLinecap: "round",
     children: i.jsx("path", {
@@ -9488,7 +9488,7 @@ function Tf({ active: a }) {
     height: "22",
     viewBox: "0 0 24 24",
     fill: "none",
-    stroke: a ? g : b,
+    stroke: a ? N : "rgba(255,255,255,0.68)",
     strokeWidth: a ? 2 : 1.5,
     strokeLinecap: "round",
     children: [
@@ -9505,7 +9505,7 @@ function bf({ active: a }) {
     height: "22",
     viewBox: "0 0 24 24",
     fill: "none",
-    stroke: a ? g : b,
+    stroke: a ? N : "rgba(255,255,255,0.68)",
     strokeWidth: a ? 2 : 1.5,
     strokeLinecap: "round",
     children: i.jsx("path", {
@@ -9519,7 +9519,7 @@ function If({ active: a }) {
     height: "22",
     viewBox: "0 0 24 24",
     fill: "none",
-    stroke: a ? g : b,
+    stroke: a ? N : "rgba(255,255,255,0.68)",
     strokeWidth: a ? 2 : 1.5,
     strokeLinecap: "round",
     children: [
@@ -9715,14 +9715,20 @@ function sd({ active: a }) {
     };
   return i.jsx("div", {
     style: {
-      backgroundColor: N,
-      borderTop: `1px solid ${Q}`,
+      position: "absolute",
+      left: 18,
+      right: 18,
+      bottom: "max(14px, env(safe-area-inset-bottom, 0px))",
+      zIndex: 40,
+      backgroundColor: "rgba(10,10,10,0.94)",
+      border: "1px solid rgba(255,255,255,0.08)",
       display: "flex",
       alignItems: "center",
-      height: 64,
-      paddingBottom: 0,
-      paddingTop: 0,
-      flexShrink: 0,
+      height: 72,
+      padding: 6,
+      borderRadius: 36,
+      boxShadow: "0 16px 40px rgba(0,0,0,0.28)",
+      backdropFilter: "blur(18px)",
     },
     children: Ef.map((h, v) =>
       i.jsxs(
@@ -9735,22 +9741,15 @@ function sd({ active: a }) {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            gap: 3,
+            gap: 0,
             height: "100%",
-            padding: 0,
+            borderRadius: 30,
+            backgroundColor: a === v ? "rgba(255,255,255,0.2)" : "transparent",
+            padding: "0 10px",
             cursor: "pointer",
           },
           children: [
             i.jsx(h.Icon, { active: a === v }),
-            i.jsx("span", {
-              style: {
-                fontSize: 11,
-                fontWeight: a === v ? 600 : 400,
-                color: a === v ? g : b,
-                lineHeight: 1.1,
-              },
-              children: h.label,
-            }),
           ],
         },
         h.label,
@@ -9773,10 +9772,11 @@ function Rf({ day: dayProp }) {
           overflowY: "auto",
           display: "flex",
           flexDirection: "column",
+          paddingBottom: 112,
         },
         children: [
           i.jsxs("div", {
-            style: { padding: "24px 20px 4px" },
+            style: { padding: "24px 24px 4px" },
             children: [
               i.jsx("div", {
                 style: {
@@ -9810,7 +9810,7 @@ function Rf({ day: dayProp }) {
               k !== -1 && a != null && a.goToIndex && a.goToIndex(k);
             },
             style: {
-              margin: "20px 16px 0",
+              margin: "20px 24px 0",
               backgroundColor: g,
               borderRadius: 24,
               padding: "20px 18px 22px",
@@ -9889,7 +9889,7 @@ function Rf({ day: dayProp }) {
               k !== -1 && a != null && a.goToIndex && a.goToIndex(k);
             },
             style: {
-              margin: "10px 16px 0",
+              margin: "10px 24px 0",
               backgroundColor: ae,
               borderRadius: 20,
               padding: "16px 18px",
@@ -9944,7 +9944,7 @@ function Rf({ day: dayProp }) {
             ],
           }),
           i.jsxs("div", {
-            style: { margin: "10px 16px 0" },
+            style: { margin: "10px 24px 0" },
             children: [
               i.jsxs("button", {
                 onClick: () => v((k) => !k),
@@ -10125,7 +10125,7 @@ function Rf({ day: dayProp }) {
               display: "grid",
               gridTemplateColumns: "1fr 1fr",
               gap: 10,
-              padding: "10px 16px 0",
+              padding: "10px 24px 0",
             },
             children: [
               i.jsxs("div", {
@@ -10261,7 +10261,7 @@ function Rf({ day: dayProp }) {
             ],
           }),
           currentDay >= 3 && i.jsx("div", {
-            style: { margin: "10px 16px 0" },
+            style: { margin: "10px 24px 0" },
             children: i.jsx($i, {
               label: "Dove sei forte / debole",
               hint: "3 aree · tocca per vedere",
@@ -10301,7 +10301,7 @@ function Rf({ day: dayProp }) {
           }),
           i.jsxs("div", {
             style: {
-              margin: "10px 16px 16px",
+              margin: "10px 24px 16px",
               backgroundColor: N,
               border: `1px solid ${Q}`,
               borderRadius: 16,
@@ -11787,7 +11787,7 @@ function Of() {
     style: { flex: 1, display: "flex", flexDirection: "column", minHeight: 0 },
     children: [
       i.jsxs("div", {
-        style: { flex: 1, overflowY: "auto", minHeight: 0, padding: "0 20px" },
+        style: { flex: 1, overflowY: "auto", minHeight: 0, padding: "0 24px 112px" },
         children: [
           i.jsxs("div", {
             style: {
@@ -16663,7 +16663,7 @@ function ProfileScreen() {
           overflowY: "auto",
           display: "flex",
           flexDirection: "column",
-          padding: "8px 20px 18px",
+          padding: "8px 24px 112px",
         },
         children: [
           i.jsxs("div", {
