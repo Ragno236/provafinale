@@ -9469,7 +9469,7 @@ function Gl({ color: a = N }) {
   });
 }
 function zf({ active: a }) {
-  return i.jsx("svg", {
+  return i.jsxs("svg", {
     width: "22",
     height: "22",
     viewBox: "0 0 24 24",
@@ -9477,9 +9477,12 @@ function zf({ active: a }) {
     stroke: a ? N : "rgba(255,255,255,0.68)",
     strokeWidth: a ? 2 : 1.5,
     strokeLinecap: "round",
-    children: i.jsx("path", {
-      d: "M3 9L12 2L21 9V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9z",
-    }),
+    strokeLinejoin: "round",
+    children: [
+      i.jsx("path", { d: "M4 10.5 12 4l8 6.5" }),
+      i.jsx("path", { d: "M6.5 9.5V20h11V9.5" }),
+      i.jsx("path", { d: "M10 20v-6h4v6" }),
+    ],
   });
 }
 function Tf({ active: a }) {
@@ -9693,41 +9696,40 @@ function ld({ label: a, children: d, bg: u = rd }) {
   });
 }
 function sd({ active: a }) {
+  const [m, S] = Z.useState(a);
+  Z.useEffect(() => S(a), [a]);
   const d = _e(),
     u = (h) => {
+      S(h);
       if (d != null && d.goToIndex) {
-        if (h === 0) {
-          const v = Se.findIndex((k) => k.label.includes("· Home"));
-          v !== -1 && d.goToIndex(v);
-        } else if (h === 1) {
-          const v = Se.findIndex((k) => k.label.includes("· Piano 12 giorni"));
-          v !== -1 && d.goToIndex(v);
-        } else if (h === 2) {
-          const v = Se.findIndex(
+        let v = -1;
+        if (h === 0) v = Se.findIndex((k) => k.label.includes("· Home"));
+        else if (h === 1)
+          v = Se.findIndex((k) => k.label.includes("· Piano 12 giorni"));
+        else if (h === 2)
+          v = Se.findIndex(
             (k) => k.day === "Giorno 8" && k.label.includes("Sessione · intro"),
           );
-          v !== -1 && d.goToIndex(v);
-        } else if (h === 3) {
-          const v = Se.findIndex((k) => k.label.includes("· Profilo"));
-          v !== -1 && d.goToIndex(v);
-        }
+        else if (h === 3)
+          v = Se.findIndex((k) => k.label.includes("· Profilo"));
+        v !== -1 && window.setTimeout(() => d.goToIndex(v), h === a ? 0 : 190);
       }
     };
   return i.jsxs("div", {
     style: {
       position: "absolute",
-      left: 34,
-      right: 34,
-      bottom: "max(12px, env(safe-area-inset-bottom, 0px))",
+      left: 50,
+      right: 50,
+      bottom: "max(10px, env(safe-area-inset-bottom, 0px))",
       zIndex: 40,
       backgroundColor: "rgba(10,10,10,0.94)",
       border: "1px solid rgba(255,255,255,0.08)",
       display: "flex",
       alignItems: "center",
-      height: 60,
-      padding: 5,
-      borderRadius: 30,
-      boxShadow: "0 14px 34px rgba(0,0,0,0.26)",
+      height: 52,
+      padding: 4,
+      borderRadius: 26,
+      boxShadow: "0 12px 28px rgba(0,0,0,0.24)",
       backdropFilter: "blur(18px)",
       overflow: "hidden",
     },
@@ -9735,14 +9737,14 @@ function sd({ active: a }) {
       i.jsx("div", {
         style: {
           position: "absolute",
-          top: 5,
-          bottom: 5,
-          left: 5,
-          width: `calc((100% - 10px) / ${Ef.length})`,
-          borderRadius: 25,
+          top: 4,
+          bottom: 4,
+          left: 4,
+          width: `calc((100% - 8px) / ${Ef.length})`,
+          borderRadius: 22,
           backgroundColor: "rgba(255,255,255,0.22)",
-          transform: `translateX(${a * 100}%)`,
-          transition: "transform 280ms ease",
+          transform: `translateX(${m * 100}%)`,
+          transition: "transform 320ms ease",
           willChange: "transform",
         },
       }),
@@ -9765,7 +9767,7 @@ function sd({ active: a }) {
               cursor: "pointer",
               fontFamily: "inherit",
             },
-            children: i.jsx(h.Icon, { active: a === v }),
+            children: i.jsx(h.Icon, { active: m === v }),
           },
           h.label,
         ),
