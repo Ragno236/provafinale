@@ -12786,19 +12786,26 @@ function ad({
     }, 150);
     return () => clearInterval(C);
   }, [se]);
+  const fs = se && V < 100;
   return i.jsxs("div", {
     style: {
-      position: "relative",
-      width: "100%",
-      maxWidth: "100%",
+      position: fs ? "fixed" : "relative",
+      top: fs ? 0 : "auto",
+      left: fs ? 0 : "auto",
+      right: fs ? 0 : "auto",
+      bottom: fs ? 0 : "auto",
+      zIndex: fs ? 999 : "auto",
+      width: fs ? "auto" : "100%",
+      maxWidth: fs ? "none" : "100%",
       boxSizing: "border-box",
       aspectRatio: "auto",
-      height: "100%",
+      height: fs ? "auto" : "100%",
       minHeight: 0,
-      borderRadius: "32px",
+      borderRadius: fs ? 0 : "32px",
       overflow: "hidden",
       backgroundColor: "#0A0A0A",
       userSelect: "none",
+      transition: "border-radius 0.3s ease",
     },
     children: [
       i.jsx("style", {
@@ -12822,8 +12829,8 @@ function ad({
         },
         style: {
           position: "absolute",
-          top: 12,
-          right: 12,
+          top: fs ? "calc(env(safe-area-inset-top, 0px) + 12px)" : 12,
+          right: fs ? 16 : 12,
           zIndex: 5,
           padding: "4px 9px",
           borderRadius: 12,
@@ -12876,7 +12883,9 @@ function ad({
           display: "flex",
           flexDirection: "column",
           justifyContent: "flex-end",
-          padding: "14px 16px 16px 16px",
+          padding: fs
+            ? "14px 20px calc(env(safe-area-inset-bottom, 0px) + 18px) 20px"
+            : "14px 16px 16px 16px",
         },
         children: [
           !cc &&
@@ -16090,33 +16099,8 @@ function Gf({ b: a, step: d, total: u, t: h }) {
           }),
         ],
       }),
-      i.jsxs("div", {
-        style: { padding: "16px 20px 10px" },
-        children: [
-          i.jsxs("div", {
-            style: {
-              fontSize: 10,
-              color: b,
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              marginBottom: 6,
-            },
-            children: ["Video Pill · Concetto ", d, " / ", u],
-          }),
-          i.jsx("div", {
-            style: {
-              fontSize: 16,
-              fontWeight: 600,
-              color: g,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.2,
-            },
-            children: a.conceptTitle || h.topic,
-          }),
-        ],
-      }),
       i.jsx("div", {
-        style: { flex: 1, minHeight: 0, display: "flex", flexDirection: "column", padding: "0 24px 16px" },
+        style: { flex: 1, minHeight: 0, display: "flex", flexDirection: "column", padding: "12px 12px 14px" },
         children: i.jsx(ad, {
           videoUrl: a.videoUrl || "",
           conceptNumber: d,
