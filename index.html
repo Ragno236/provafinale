@@ -15,8 +15,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-      html, body { width: 100%; height: 100dvh; background: #FBFAF6; overflow: hidden; }
-      #root { width: 100%; height: 100dvh; }
+      html, body { width: 100%; height: 100svh; background: #FBFAF6; overflow: hidden; }
+      #root { width: 100%; height: 100svh; }
 
       /* iOS "Add to Home Screen" banner */
       #ios-hint {
@@ -9718,8 +9718,8 @@ function sd({ active: a }) {
       backgroundColor: N,
       borderTop: `1px solid ${Q}`,
       display: "flex",
-      paddingBottom: 20,
-      paddingTop: 8,
+      paddingBottom: 0,
+      paddingTop: 10,
       flexShrink: 0,
     },
     children: Ef.map((h, v) =>
@@ -17334,14 +17334,16 @@ function Jf() {
         onTouchEnd: P,
         style: {
           width: "100%",
-          height: "100dvh",
-          maxHeight: "100dvh",
+          height: "100svh",
+          maxHeight: "100svh",
           backgroundColor: u.bg || pt,
           display: "flex",
           flexDirection: "column",
           fontFamily: "'Helvetica Neue', Helvetica, sans-serif",
           overflow: "hidden",
           position: "relative",
+          paddingTop: "calc(env(safe-area-inset-top, 0px) + 10px)",
+          paddingBottom: 0,
         },
         children: [
           i.jsx(
