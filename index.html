@@ -9713,48 +9713,64 @@ function sd({ active: a }) {
         }
       }
     };
-  return i.jsx("div", {
+  return i.jsxs("div", {
     style: {
       position: "absolute",
-      left: 18,
-      right: 18,
-      bottom: "max(14px, env(safe-area-inset-bottom, 0px))",
+      left: 34,
+      right: 34,
+      bottom: "max(12px, env(safe-area-inset-bottom, 0px))",
       zIndex: 40,
       backgroundColor: "rgba(10,10,10,0.94)",
       border: "1px solid rgba(255,255,255,0.08)",
       display: "flex",
       alignItems: "center",
-      height: 72,
-      padding: 6,
-      borderRadius: 36,
-      boxShadow: "0 16px 40px rgba(0,0,0,0.28)",
+      height: 60,
+      padding: 5,
+      borderRadius: 30,
+      boxShadow: "0 14px 34px rgba(0,0,0,0.26)",
       backdropFilter: "blur(18px)",
+      overflow: "hidden",
     },
-    children: Ef.map((h, v) =>
-      i.jsxs(
-        "div",
-        {
-          onClick: () => u(v),
-          style: {
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 0,
-            height: "100%",
-            borderRadius: 30,
-            backgroundColor: a === v ? "rgba(255,255,255,0.2)" : "transparent",
-            padding: "0 10px",
-            cursor: "pointer",
-          },
-          children: [
-            i.jsx(h.Icon, { active: a === v }),
-          ],
+    children: [
+      i.jsx("div", {
+        style: {
+          position: "absolute",
+          top: 5,
+          bottom: 5,
+          left: 5,
+          width: `calc((100% - 10px) / ${Ef.length})`,
+          borderRadius: 25,
+          backgroundColor: "rgba(255,255,255,0.22)",
+          transform: `translateX(${a * 100}%)`,
+          transition: "transform 280ms ease",
+          willChange: "transform",
         },
-        h.label,
+      }),
+      ...Ef.map((h, v) =>
+        i.jsx(
+          "button",
+          {
+            onClick: () => u(v),
+            style: {
+              flex: 1,
+              position: "relative",
+              zIndex: 1,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "100%",
+              border: "none",
+              background: "transparent",
+              padding: 0,
+              cursor: "pointer",
+              fontFamily: "inherit",
+            },
+            children: i.jsx(h.Icon, { active: a === v }),
+          },
+          h.label,
+        ),
       ),
-    ),
+    ],
   });
 }
 function Rf({ day: dayProp }) {
