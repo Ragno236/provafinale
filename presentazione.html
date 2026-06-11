@@ -30,7 +30,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* ── STAGE 16:9 ── */
   #stage-wrap { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
   #stage {
     width: 1280px; height: 720px;
@@ -38,7 +37,6 @@
     background: var(--bg); overflow: hidden;
   }
 
-  /* ── SLIDES ── */
   .slide {
     position: absolute; inset: 0;
     padding: 56px 72px;
@@ -64,8 +62,7 @@
   .active [data-anim="4"] { transition-delay: 0.52s; }
   .active [data-anim="5"] { transition-delay: 0.64s; }
 
-  /* ── SHARED CHROME ── */
-  /* small brand mark top-left, slides 3+ */
+  /* brand mark top-left, slides 3+ */
   .slide-logo {
     position: absolute; top: 40px; left: 72px;
     font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
@@ -87,40 +84,25 @@
   }
   .author strong { color: var(--white); font-weight: 700; font-size: 13px; letter-spacing: 0.06em; }
 
-  /* school logo image (S02 & S12) */
-  .school-img {
-    position: absolute; bottom: 38px; right: 72px;
-    height: 28px; width: auto;
-    filter: brightness(0) invert(1); opacity: 0.65;
-    object-fit: contain;
-  }
-
-  /* ── S01 OPENING ── */
+  /* ── S01 ── */
   .open-center { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; }
-  .open-line {
-    font-size: 58px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.22;
-  }
+  .open-line { font-size: 46px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.28; }
   .open-line .hl { color: var(--lime); }
 
-  /* ── S02 LOGO ── */
+  /* ── S02 ── */
   .logo-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .logo-ring-wrap { position: relative; width: 470px; height: 200px; display: flex; align-items: center; justify-content: center; }
-  .logo-ring {
-    position: absolute; top: 50%; left: 50%;
-    width: 560px; height: 230px; transform: translate(-50%,-50%);
-  }
+  .logo-ring { position: absolute; top: 50%; left: 50%; width: 560px; height: 230px; transform: translate(-50%,-50%); }
   .logo-ring ellipse {
     fill: none; stroke: var(--lime); stroke-width: 1.5;
-    stroke-dasharray: 1300; stroke-dashoffset: 1300;
-    opacity: 0.55;
+    stroke-dasharray: 1300; stroke-dashoffset: 1300; opacity: 0.55;
   }
   .active .logo-ring ellipse { animation: ringDraw 2.2s cubic-bezier(0.32,0.72,0,1) 0.3s forwards; }
   @keyframes ringDraw { to { stroke-dashoffset: 0; } }
   .wordmark {
     font-family: 'Inter', "Helvetica Neue", sans-serif;
     font-size: 96px; font-weight: 900; letter-spacing: -0.05em;
-    text-transform: uppercase; line-height: 1; white-space: nowrap;
-    display: flex;
+    text-transform: uppercase; line-height: 1; white-space: nowrap; display: flex;
   }
   .wordmark b { font-weight: 900; display: inline-block; opacity: 0; transform: translateY(34px); }
   .active .wordmark b { animation: letterUp 0.6s cubic-bezier(0.32,0.72,0,1) forwards; }
@@ -135,28 +117,44 @@
   .wordmark b:nth-child(9)  { animation-delay: 0.53s; }
   .wordmark b:nth-child(10) { animation-delay: 0.62s; color: var(--lime); }
   @keyframes letterUp { to { opacity: 1; transform: none; } }
-
-  /* ── S03 QUESTION ── */
-  .q-center { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; }
-  .question {
-    font-size: 52px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.28;
+  /* school logo container — white pill so colored logo is visible on dark bg */
+  .school-badge {
+    position: absolute; bottom: 36px; right: 72px;
+    background: rgba(255,255,255,0.94); border-radius: 10px;
+    padding: 7px 16px; display: flex; align-items: center;
   }
+  .school-badge img { height: 26px; width: auto; display: block; }
+
+  /* ── S03 ── */
+  .q-center { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; }
+  .question { font-size: 44px; font-weight: 900; letter-spacing: -0.03em; line-height: 1.32; }
   .question .hl { color: var(--lime); }
 
-  /* ── S04 STAT ── */
+  /* ── S04 ── */
   .stat-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
   .stat-pct { font-size: 280px; font-weight: 900; letter-spacing: -0.06em; line-height: 0.85; color: var(--lime); }
   .stat-sent { margin-top: 34px; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; max-width: 840px; line-height: 1.4; color: rgba(255,255,255,0.85); }
 
-  /* ── S05 IDEA ── */
-  .idea-split { flex: 1; display: grid; grid-template-columns: 1.25fr 0.85fr; gap: 70px; align-items: center; margin-top: 48px; }
-  .idea-text { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.45; color: rgba(255,255,255,0.88); }
+  /* ── S05 ── */
+  .idea-split { flex: 1; display: grid; grid-template-columns: 1.25fr 0.9fr; gap: 60px; align-items: center; margin-top: 48px; }
+  .idea-text { font-size: 30px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.48; color: rgba(255,255,255,0.9); }
   .idea-text .hl { color: var(--lime); }
+  /* animated journey map */
+  .jpath { opacity: 0; }
+  .active .jpath {
+    opacity: 1;
+    animation: drawJPath 2.4s cubic-bezier(0.4,0,0.2,1) 0.5s forwards,
+               marchJPath 4s linear 3s infinite;
+  }
+  @keyframes drawJPath { from { stroke-dashoffset: 760; } to { stroke-dashoffset: 0; } }
+  @keyframes marchJPath { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -170; } }
+  .jnode { opacity: 0; }
+  .active .jnode { animation: fadeJNode 0.35s ease forwards; animation-delay: var(--jd); }
+  @keyframes fadeJNode { to { opacity: 1; } }
 
   /* ── PHONES (mockup) ── */
   .phone {
-    width: 246px; height: 504px;
-    background: #000; border-radius: 40px;
+    width: 246px; height: 504px; background: #000; border-radius: 40px;
     box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 0 6px #262626;
     overflow: hidden; display: flex; flex-direction: column; flex-shrink: 0;
     font-family: -apple-system, "Helvetica Neue", sans-serif;
@@ -164,8 +162,8 @@
   .notch { width: 84px; height: 20px; background: #262626; border-radius: 11px; margin: 10px auto 0; }
   .scr {
     flex: 1; margin: 10px 10px 12px; border-radius: 28px;
-    background: var(--cream); padding: 18px 14px;
-    display: flex; flex-direction: column; gap: 9px;
+    background: var(--cream); padding: 16px 13px;
+    display: flex; flex-direction: column; gap: 8px;
     overflow: hidden; color: #0A0A0A;
     font-family: -apple-system, "Helvetica Neue", sans-serif;
   }
@@ -183,22 +181,20 @@
   .scr .bub { border-radius: 12px; padding: 10px 12px; font-size: 9.5px; line-height: 1.4; max-width: 90%; font-weight: 400; }
   .scr .bub.them { background: #fff; border: 1px solid var(--cardborder); }
   .scr .bub.me { background: #0A0A0A; color: #fff; align-self: flex-end; }
-  .scr .chip { display: inline-flex; align-items: center; gap: 5px; background: rgba(0,0,0,0.07); border-radius: 99px; padding: 4px 9px; font-size: 8px; font-weight: 600; }
 
   /* ── S06 METHOD ── */
   .method { flex: 1; display: flex; align-items: center; }
   .mt-track { width: 100%; position: relative; }
-  .mt-line { position: absolute; top: 50%; left: 1%; right: 1%; height: 1px; background: rgba(255,255,255,0.1); }
-  .mt-nodes { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; position: relative; }
+  .mt-nodes { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; position: relative; }
   .mt-pill {
-    border: 1px solid var(--pillborder); border-radius: 999px;
-    background: rgba(255,255,255,0.025);
-    padding: 30px 16px; text-align: center;
-    display: flex; flex-direction: column; align-items: center; gap: 12px;
+    flex: 0 0 calc(20% - 12px);
+    border: none; border-radius: 999px;
+    background: var(--lime);
+    padding: 22px 18px; text-align: center;
+    display: flex; align-items: center; justify-content: center;
     position: relative; z-index: 1;
   }
-  .mt-icon { font-size: 22px; line-height: 1; }
-  .mt-name { font-size: 13.5px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; }
+  .mt-name { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; line-height: 1.3; color: #0A0A0A; }
 
   /* ── INSIGHTS S07–S10 ── */
   .ghost {
@@ -212,23 +208,29 @@
   .ins-state .hl { color: var(--lime); }
   .qpill {
     border: 1px solid var(--pillborder); border-radius: 999px;
-    padding: 52px 48px; text-align: center;
-    font-size: 21px; font-style: italic; font-weight: 400;
-    color: var(--quote); line-height: 1.48;
+    padding: 52px 46px; text-align: center;
+    font-size: 20px; font-style: italic; font-weight: 400;
+    color: var(--quote); line-height: 1.5;
     background: rgba(255,255,255,0.02);
   }
-  .qsrc { margin-top: 18px; font-size: 10px; font-style: normal; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
+  .qsrc { margin-top: 16px; font-size: 10px; font-style: normal; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dim); }
 
   /* ── S11 PRODUCT ── */
-  .prod-row { flex: 1; display: flex; align-items: center; justify-content: center; gap: 50px; margin-top: 30px; }
-  .prod-col { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .prod-row { flex: 1; display: flex; align-items: center; justify-content: center; gap: 44px; margin-top: 28px; }
+  .prod-col { display: flex; flex-direction: column; align-items: center; gap: 16px; }
   .prod-col .phone { width: 214px; height: 438px; border-radius: 34px; }
   .prod-col .scr { border-radius: 24px; }
   .prod-label { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
 
   /* ── S12 CLOSE ── */
-  .close-center { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-  .grazie { font-size: 200px; font-weight: 900; letter-spacing: -0.05em; color: var(--lime); line-height: 0.88; }
+  .close-grid { flex: 1; display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: center; }
+  .grazie { font-size: 168px; font-weight: 900; letter-spacing: -0.05em; color: var(--lime); line-height: 0.9; }
+  .qrbox {
+    background: var(--white); border-radius: 22px; padding: 24px;
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+  }
+  .qrbox img { width: 200px; height: 200px; display: block; }
+  .qrcta { font-size: 16px; font-weight: 500; color: #0A0A0A; letter-spacing: -0.01em; }
 
   /* ── NAV ── */
   #progress { position: absolute; left: 0; bottom: 0; height: 3px; background: var(--lime); width: 0%; transition: width 0.4s ease; z-index: 50; }
@@ -240,7 +242,7 @@
 <div id="stage-wrap">
   <div id="stage">
 
-    <!-- ═══ S01 · FRASE DI APERTURA ═══ -->
+    <!-- ═══ S01 · APERTURA ═══ -->
     <section class="slide">
       <div class="open-center">
         <div class="open-line" data-anim="1">
@@ -266,15 +268,12 @@
         <strong>Simone Ragnoli</strong>
         <span>UX/UI Master · 2026</span>
       </div>
-      <img
-        src="https://raw.githubusercontent.com/Ragno236/provafinale/main/logo-talentgarden-1.png"
-        alt="Talent Garden"
-        class="school-img"
-        data-anim="3"
-      />
+      <div class="school-badge" data-anim="3">
+        <img src="https://raw.githubusercontent.com/Ragno236/provafinale/main/logo-talentgarden-1.png" alt="Talent Garden" />
+      </div>
     </section>
 
-    <!-- ═══ S03 · DOMANDA RETORICA ═══ -->
+    <!-- ═══ S03 · DOMANDA ═══ -->
     <section class="slide">
       <div class="slide-logo">Readiness<span>.</span></div>
       <div class="q-center">
@@ -290,7 +289,7 @@
       <div class="slide-logo">Readiness<span>.</span></div>
       <div class="stat-center">
         <div class="stat-pct" data-anim="1">52%</div>
-        <div class="stat-sent" data-anim="2">Per oltre il 50% delle persone, il vero ostacolo è arrivato ancora prima dell'evento: non sapevano da dove iniziare a prepararsi.</div>
+        <div class="stat-sent" data-anim="2">Per oltre il 52% delle persone, il vero ostacolo è arrivato ancora prima dell'evento: non sapevano da dove iniziare a prepararsi.</div>
       </div>
     </section>
 
@@ -302,21 +301,33 @@
         <div class="idea-text" data-anim="1">
           Readiness ti aiuta a essere pronto quando conta, trasformando ogni <span class="hl">obiettivo professionale</span> in un percorso personalizzato di preparazione e miglioramento continuo.
         </div>
-        <div style="display:flex; justify-content:center" data-anim="2">
-          <div class="phone">
-            <div class="notch"></div>
-            <div class="scr">
-              <div class="eye">Il tuo obiettivo</div>
-              <div class="ttl">Talk al Talent Garden su AI &amp; lavoro</div>
-              <div class="card">
-                Avanzamento
-                <div class="bars"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              </div>
-              <div class="row">Cos'è AI generativa <span>12 min ✓</span></div>
-              <div class="row">Cosa è un LLM <span>15 min</span></div>
-              <div class="cta">Inizia la sessione</div>
-            </div>
-          </div>
+        <!-- Animated journey map -->
+        <div style="display:flex;justify-content:center;align-items:center" data-anim="2">
+          <svg viewBox="0 0 480 360" xmlns="http://www.w3.org/2000/svg" style="width:460px;height:350px;overflow:visible">
+            <!-- subtle grid -->
+            <line x1="0" y1="120" x2="480" y2="120" stroke="#E8FF5A" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="3 6"/>
+            <line x1="0" y1="240" x2="480" y2="240" stroke="#E8FF5A" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="3 6"/>
+            <line x1="160" y1="0" x2="160" y2="360" stroke="#E8FF5A" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="3 6"/>
+            <line x1="320" y1="0" x2="320" y2="360" stroke="#E8FF5A" stroke-opacity="0.1" stroke-width="1" stroke-dasharray="3 6"/>
+            <!-- secondary routes -->
+            <path d="M 160 0 L 160 120" fill="none" stroke="#E8FF5A" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="6 5"/>
+            <path d="M 0 240 L 320 240" fill="none" stroke="#E8FF5A" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="6 5"/>
+            <path d="M 320 120 L 480 120" fill="none" stroke="#E8FF5A" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="6 5"/>
+            <!-- MAIN PATH -->
+            <path class="jpath"
+              d="M 60 300 L 160 300 L 160 240 L 320 240 L 320 120 L 420 120 L 420 60"
+              fill="none" stroke="#E8FF5A" stroke-width="2.5"
+              stroke-dasharray="11 7" stroke-dashoffset="760"
+              stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- nodes -->
+            <circle class="jnode" style="--jd:.35s" cx="60" cy="300" r="7" fill="#E8FF5A"/>
+            <circle class="jnode" style="--jd:.35s" cx="60" cy="300" r="14" fill="none" stroke="#E8FF5A" stroke-width="1.2" opacity=".35"/>
+            <circle class="jnode" style="--jd:1.0s" cx="160" cy="240" r="7" fill="#E8FF5A"/>
+            <circle class="jnode" style="--jd:1.6s" cx="320" cy="120" r="7" fill="#E8FF5A"/>
+            <circle class="jnode" style="--jd:2.2s" cx="420" cy="60" r="10" fill="#E8FF5A"/>
+            <circle class="jnode" style="--jd:2.2s" cx="420" cy="60" r="20" fill="none" stroke="#E8FF5A" stroke-width="1.5" opacity=".4"/>
+            <circle class="jnode" style="--jd:2.2s" cx="420" cy="60" r="32" fill="none" stroke="#E8FF5A" stroke-width="1" opacity=".18"/>
+          </svg>
         </div>
       </div>
     </section>
@@ -327,28 +338,12 @@
       <div class="tag">METODO</div>
       <div class="method">
         <div class="mt-track">
-          <div class="mt-line"></div>
           <div class="mt-nodes">
-            <div class="mt-pill" data-anim="1">
-              <div class="mt-icon">🔍</div>
-              <div class="mt-name">Digital observation</div>
-            </div>
-            <div class="mt-pill" data-anim="2">
-              <div class="mt-icon">⚡</div>
-              <div class="mt-name">Benchmark competitivo</div>
-            </div>
-            <div class="mt-pill" data-anim="3">
-              <div class="mt-icon">📊</div>
-              <div class="mt-name">Survey online</div>
-            </div>
-            <div class="mt-pill" data-anim="4">
-              <div class="mt-icon">🎙</div>
-              <div class="mt-name">Interviste semi-strutturate</div>
-            </div>
-            <div class="mt-pill" data-anim="5">
-              <div class="mt-icon">👤</div>
-              <div class="mt-name">User Personas</div>
-            </div>
+            <div class="mt-pill" data-anim="1"><div class="mt-name">Digital observation</div></div>
+            <div class="mt-pill" data-anim="2"><div class="mt-name">Benchmark competitivo</div></div>
+            <div class="mt-pill" data-anim="3"><div class="mt-name">Survey online</div></div>
+            <div class="mt-pill" data-anim="4"><div class="mt-name">Interviste semi-strutturate</div></div>
+            <div class="mt-pill" data-anim="5"><div class="mt-name">User Personas</div></div>
           </div>
         </div>
       </div>
@@ -360,7 +355,7 @@
       <div class="tag">INSIGHT</div>
       <div class="ghost">1</div>
       <div class="ins-grid">
-        <div class="ins-state" data-anim="1">Il vero ostacolo non è la mancanza di tempo, ma <span class="hl">non sapere da dove iniziare.</span></div>
+        <div class="ins-state" data-anim="1">Il vero ostacolo non è la mancanza di tempo,<br>ma <span class="hl">non sapere da dove iniziare.</span></div>
         <div class="qpill" data-anim="2">
           "Mi servirebbe qualcosa che aiuti a riordinare e dare una scala di priorità."
           <div class="qsrc">Edoardo · Intervista</div>
@@ -374,7 +369,7 @@
       <div class="tag">INSIGHT</div>
       <div class="ghost">2</div>
       <div class="ins-grid">
-        <div class="ins-state" data-anim="1">Chi usa l'AI non performa necessariamente meglio degli altri: <span class="hl">manca il percorso</span> che trasforma il contenuto in preparazione concreta.</div>
+        <div class="ins-state" data-anim="1">Chi usa l'AI non performa necessariamente meglio degli altri.<br><span class="hl">Manca il percorso</span> che trasforma il contenuto in preparazione concreta.</div>
         <div class="qpill" data-anim="2">
           "L'AI sputa fuori una grande mole non di facile fruizione."
           <div class="qsrc">Edoardo · Intervista</div>
@@ -415,69 +410,103 @@
       <div class="slide-logo">Readiness<span>.</span></div>
       <div class="tag">Readiness · APP</div>
       <div class="prod-row">
+
+        <!-- SCREEN 1: Simulazione -->
         <div class="prod-col" data-anim="1">
           <div class="phone">
             <div class="notch"></div>
-            <div class="scr">
-              <div class="eye">Nuovo evento</div>
-              <div class="ttl">Cosa devi affrontare?</div>
-              <div class="row">Pitch con cliente <span>→</span></div>
-              <div class="row">Talk / presentazione <span>→</span></div>
-              <div class="row">Networking <span>→</span></div>
-              <div class="row">Colloquio <span>→</span></div>
-              <div class="cta">Continua</div>
-            </div>
-          </div>
-          <div class="prod-label">Dichiara l'evento</div>
-        </div>
-        <div class="prod-col" data-anim="2">
-          <div class="phone">
-            <div class="notch"></div>
-            <div class="scr">
-              <div class="eye">Readiness score</div>
-              <div class="score">78<em>/100</em></div>
-              <div class="card">
-                Gap residuo
-                <div class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+            <div class="scr" style="background:#111;color:#fff;gap:6px">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div style="font-size:6.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.38);font-weight:500">SIMULAZIONE · T-4G</div>
+                <span style="background:var(--lime);color:#000;border-radius:99px;padding:2px 7px;font-size:6px;font-weight:800">LIVE</span>
               </div>
-              <div class="row">Contenuto coperto <span>✓</span></div>
-              <div class="row">Apertura conversazionale <span>!</span></div>
-              <div class="cta">Colma il gap</div>
-            </div>
-          </div>
-          <div class="prod-label">Misura il gap</div>
-        </div>
-        <div class="prod-col" data-anim="3">
-          <div class="phone">
-            <div class="notch"></div>
-            <div class="scr">
-              <div class="eye">Simulazione · Cliente</div>
-              <div class="bub them">Quindi, in concreto, cosa cambierebbe per noi nei primi 3 mesi?</div>
-              <div class="bub me">Tre cose: tempi di risposta, un processo unico di brief e…</div>
-              <div class="bub them">E sul budget?</div>
-              <div class="cta">Rispondi</div>
+              <div style="font-size:24px;font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1">08:24<span style="font-size:9px;color:rgba(255,255,255,.38);font-weight:400;margin-left:5px">/ 15:00</span></div>
+              <div style="display:flex;gap:5px">
+                <span style="background:var(--lime);border-radius:99px;padding:3px 9px;font-size:7px;font-weight:800;color:#000">R1</span>
+                <span style="background:var(--lime);border-radius:99px;padding:3px 9px;font-size:7px;font-weight:800;color:#000">R2</span>
+                <span style="background:var(--lime);border-radius:99px;padding:3px 9px;font-size:7px;font-weight:800;color:#000">R3</span>
+                <span style="background:rgba(255,255,255,.1);border-radius:99px;padding:3px 9px;font-size:7px;font-weight:500;color:rgba(255,255,255,.35)">R4</span>
+                <span style="background:rgba(255,255,255,.1);border-radius:99px;padding:3px 9px;font-size:7px;font-weight:500;color:rgba(255,255,255,.35)">R5</span>
+              </div>
+              <div style="background:#1c1c1e;border-radius:10px;padding:9px 10px">
+                <div style="font-size:5.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);font-weight:700;margin-bottom:3px">AI · Round 2 · Obiezione forte</div>
+                <div style="font-size:9px;color:#fff;line-height:1.4">«L'AI sostituirà ruoli interi, non solo task.» Rispondi.</div>
+              </div>
+              <div style="background:var(--lime);border-radius:10px;padding:9px 10px;margin-top:auto">
+                <div style="font-size:5.5px;letter-spacing:.1em;text-transform:uppercase;color:#000;font-weight:800;margin-bottom:4px">Round 3 · Stai parlando</div>
+                <div style="text-align:center;font-size:13px;color:#000;letter-spacing:4px">▌▊▌▍▌▊</div>
+                <div style="font-size:6px;text-align:center;color:rgba(0,0,0,.6);margin-top:2px">00:24 · RITMO OK</div>
+              </div>
             </div>
           </div>
           <div class="prod-label">Simula la conversazione</div>
         </div>
+
+        <!-- SCREEN 2: Feedback -->
+        <div class="prod-col" data-anim="2">
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="scr" style="background:#111;color:#fff;gap:7px">
+              <div style="font-size:6.5px;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.38);font-weight:500">SESSIONE CONCLUSA · GIORNO 5</div>
+              <div style="font-size:22px;font-weight:900;letter-spacing:-.03em;color:#fff;line-height:1.1">Ci siamo.</div>
+              <div style="font-size:9px;color:rgba(255,255,255,.45);margin-top:-2px">Un passo avanti rispetto a ieri.</div>
+              <div style="background:#1c1c1e;border-radius:12px;padding:11px 11px">
+                <div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);font-weight:700;margin-bottom:4px">PUNTO FORTE</div>
+                <div style="font-size:8.5px;color:#fff;line-height:1.45">Hai consolidato «AI in Italia». Sai sostenerlo in conversazione.</div>
+                <div style="border-top:1px solid rgba(255,255,255,.1);margin-top:8px;padding-top:8px">
+                  <div style="font-size:6px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600;margin-bottom:4px">DA RIVEDERE</div>
+                  <div style="font-size:8.5px;color:rgba(255,255,255,.65);line-height:1.45">L'apertura conversazionale resta il gap più grosso.</div>
+                </div>
+              </div>
+              <div style="margin-top:auto;background:var(--lime);border-radius:99px;text-align:center;padding:10px;font-size:10px;font-weight:700;color:#0A0A0A">Vai alla home →</div>
+            </div>
+          </div>
+          <div class="prod-label">Leggi il feedback</div>
+        </div>
+
+        <!-- SCREEN 3: Esercizio -->
+        <div class="prod-col" data-anim="3">
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="scr">
+              <div class="eye">CI SIAMO QUASI · COMPLETA LA RISPOSTA</div>
+              <div style="font-size:9px;color:rgba(0,0,0,.6);line-height:1.45">Prevedere ≠ comprendere: l'output può essere fluente e sbagliato.</div>
+              <div style="background:#fff;border:1px solid var(--cardborder);border-radius:13px;padding:12px 12px">
+                <div style="font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);font-weight:600;margin-bottom:8px">RIEMPI LO SPAZIO VUOTO</div>
+                <div style="font-size:10px;line-height:1.7;color:#0A0A0A">Un LLM non capisce come una persona: <span style="border-bottom:1.5px solid #0A0A0A;padding-bottom:1px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> la parola più probabile.</div>
+              </div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px">
+                <span style="border:1px solid var(--cardborder);border-radius:99px;padding:5px 11px;font-size:9.5px;font-weight:600;color:#0A0A0A">prevede</span>
+                <span style="border:1px solid var(--cardborder);border-radius:99px;padding:5px 11px;font-size:9.5px;font-weight:600;color:#0A0A0A">ricorda</span>
+                <span style="border:1px solid var(--cardborder);border-radius:99px;padding:5px 11px;font-size:9.5px;font-weight:600;color:#0A0A0A">decide</span>
+              </div>
+              <div class="cta">Continua</div>
+            </div>
+          </div>
+          <div class="prod-label">Allenati sui contenuti</div>
+        </div>
+
       </div>
     </section>
 
     <!-- ═══ S12 · CHIUSURA ═══ -->
     <section class="slide">
-      <div class="close-center">
-        <div class="grazie" data-anim="1">Grazie.</div>
+      <div class="close-grid">
+        <div>
+          <div class="grazie" data-anim="1">Grazie.</div>
+        </div>
+        <div class="qrbox" data-anim="2">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=440x440&margin=10&data=https%3A%2F%2Fragno236.github.io%2Fprovafinale%2F" alt="QR prototipo" />
+          <div class="qrcta">Prova il prototipo</div>
+        </div>
       </div>
-      <div class="author" data-anim="2">
+      <div class="author" data-anim="3">
         <strong>Simone Ragnoli</strong>
         <span>UX/UI Master · 2026</span>
       </div>
-      <img
-        src="https://raw.githubusercontent.com/Ragno236/provafinale/main/logo-talentgarden-1.png"
-        alt="Talent Garden"
-        class="school-img"
-        data-anim="2"
-      />
+      <div class="school-badge" data-anim="3">
+        <img src="https://raw.githubusercontent.com/Ragno236/provafinale/main/logo-talentgarden-1.png" alt="Talent Garden" />
+      </div>
     </section>
 
     <div id="progress"></div>
