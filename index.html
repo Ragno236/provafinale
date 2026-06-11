@@ -9247,6 +9247,7 @@ function vf() {
   return ((Hi.createRoot = a.createRoot), (Hi.hydrateRoot = a.hydrateRoot), Hi);
 }
 var Sf = vf(),
+  Wd = yf(),
   Z = Ql();
 const Vl = Z.createContext(null);
 function _e() {
@@ -12787,14 +12788,15 @@ function ad({
     return () => clearInterval(C);
   }, [se]);
   const fs = se && V < 100;
-  return i.jsxs("div", {
+  const wrapFs = (Te) => (fs ? Wd.createPortal(Te, document.body) : Te);
+  return wrapFs(i.jsxs("div", {
     style: {
       position: fs ? "fixed" : "relative",
       top: fs ? 0 : "auto",
       left: fs ? 0 : "auto",
       right: fs ? 0 : "auto",
       bottom: fs ? 0 : "auto",
-      zIndex: fs ? 999 : "auto",
+      zIndex: fs ? 9999 : "auto",
       width: fs ? "auto" : "100%",
       maxWidth: fs ? "none" : "100%",
       boxSizing: "border-box",
@@ -12805,12 +12807,16 @@ function ad({
       overflow: "hidden",
       backgroundColor: "#0A0A0A",
       userSelect: "none",
-      transition: "border-radius 0.3s ease",
+      animation: fs
+        ? "pillZoomIn 0.45s cubic-bezier(0.32,0.72,0,1)"
+        : V >= 100
+          ? "pillSettle 0.4s cubic-bezier(0.32,0.72,0,1)"
+          : "none",
     },
     children: [
       i.jsx("style", {
         children:
-          "@keyframes gradFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}} @keyframes subIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}",
+          "@keyframes gradFlow{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}} @keyframes subIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}} @keyframes pillZoomIn{from{transform:scale(0.94);border-radius:32px;opacity:0.9}to{transform:scale(1);border-radius:0;opacity:1}} @keyframes pillSettle{from{transform:scale(1.03);opacity:0.85}to{transform:scale(1);opacity:1}}",
       }),
       i.jsx("div", {
         style: {
@@ -13018,7 +13024,7 @@ function ad({
         }),
       }),
     ],
-  });
+  }));
 }
 function ud({ pairs: a, onComplete: d }) {
   const [u, h] = Z.useState([]),
